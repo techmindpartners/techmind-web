@@ -158,6 +158,25 @@ document.addEventListener('DOMContentLoaded', function() {
         el.style.transition = 'all 0.6s ease';
         observer.observe(el);
     });
+
+    // Services Flow Line Animation Observer
+    const servicesSection = document.querySelector('.our-services');
+    if (servicesSection) {
+        const servicesObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                } else {
+                    entry.target.classList.remove('in-view');
+                }
+            });
+        }, {
+            threshold: 0.3,
+            rootMargin: '-50px 0px -50px 0px'
+        });
+
+        servicesObserver.observe(servicesSection);
+    }
 });
 
 // Team Testimonial Slider
@@ -237,4 +256,73 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Success Stories Testimonials Slider
+document.addEventListener('DOMContentLoaded', function() {
+    const slider = document.querySelector('.testimonials-slider');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    
+    if (slider && prevBtn && nextBtn) {
+        const cardWidth = 332; // 300px card + 32px gap
+        let currentPosition = 0;
+        const maxCards = document.querySelectorAll('.testimonial-card').length;
+        const visibleCards = Math.floor(slider.offsetWidth / cardWidth);
+        const maxPosition = Math.max(0, (maxCards - visibleCards) * cardWidth);
+        
+        function updateButtonStates() {
+            prevBtn.disabled = currentPosition <= 0;
+            nextBtn.disabled = currentPosition >= maxPosition;
+        }
+        
+        function slideNext() {
+            if (currentPosition < maxPosition) {
+                currentPosition += cardWidth;
+                slider.scrollTo({
+                    left: currentPosition,
+                    behavior: 'smooth'
+                });
+            }
+            updateButtonStates();
+        }
+        
+        function slidePrev() {
+            if (currentPosition > 0) {
+                currentPosition -= cardWidth;
+                slider.scrollTo({
+                    left: currentPosition,
+                    behavior: 'smooth'
+                });
+            }
+            updateButtonStates();
+        }
+        
+        // Event listeners
+        nextBtn.addEventListener('click', slideNext);
+        prevBtn.addEventListener('click', slidePrev);
+        
+        // Handle scroll events to update current position
+        slider.addEventListener('scroll', function() {
+            currentPosition = slider.scrollLeft;
+            updateButtonStates();
+        });
+        
+        // Initialize button states
+        updateButtonStates();
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            const newVisibleCards = Math.floor(slider.offsetWidth / cardWidth);
+            const newMaxPosition = Math.max(0, (maxCards - newVisibleCards) * cardWidth);
+            
+            if (currentPosition > newMaxPosition) {
+                currentPosition = newMaxPosition;
+                slider.scrollTo({
+                    left: currentPosition,
+                    behavior: 'smooth'
+                });
+            }
+            updateButtonStates();
+        });
+    }
+});
 
