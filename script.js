@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function() {
             title: "Meet Hakan, our Managing Partner & CEO. Leading the strategic vision and operations at Techmind Partners.",
             name: "HAKAN ARICI",
             role: "CEO",
-            image: "assets/client-1.png"
+            image: "assets/team-img.png"
         },
         {
             title: "Meet Sarah, our CTO. Driving innovation and technical excellence in all our technology solutions.",
@@ -325,4 +325,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// FAQ Toggle Functionality
+function toggleFAQ(element) {
+    const faqItem = element.closest('.faq-item');
+    const isActive = faqItem.classList.contains('active');
+    
+    // Close all other FAQ items
+    const allFaqItems = document.querySelectorAll('.faq-item');
+    allFaqItems.forEach(item => {
+        item.classList.remove('active');
+    });
+    
+    // Toggle current item
+    if (!isActive) {
+        faqItem.classList.add('active');
+    }
+}
 
