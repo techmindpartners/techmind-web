@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Techmind - Contact Us</title>
+    <meta name="description" content="Contact Techmind - Get in touch with our team" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="navbar">
+            <div class="container">
+                <div class="nav-brand">
+                    <img src="logo.svg" alt="Techmind" class="logo-img" />
+                </div>
+
+                <nav class="nav-menu" id="nav-menu">
+                    <ul class="nav-list">
+                        <li><a href="#services" class="nav-link active">SERVICES</a></li>
+                        <li><a href="#clients" class="nav-link">CLIENTS</a></li>
+                        <li><a href="#partners" class="nav-link">PARTNERS</a></li>
+                        <li><a href="#team" class="nav-link">TEAM</a></li>
+                    </ul>
+                </nav>
+
+                <div class="nav-contact">
+                    <a href="#contact" class="contact-btn">Contact</a>
+                </div>
+
+                <div class="nav-toggle" id="nav-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <div class="contact-background">
+                <img src="bg-pattern.png" alt="Background Pattern" class="contact-bg-pattern">
+            </div>
+            
+            <div class="contact-content-group">
+                <div class="contact-header">
+                    <span class="contact-label">Contact us</span>
+                    <h1 class="contact-title">Get in touch</h1>
+                    <p class="contact-description">We'd love to hear from you. Please fill out this form.</p>
+                </div>
+
+                <form class="contact-form-group">
+                    <div class="form-group">
+                        <label for="firstName">First name <span class="required">*</span></label>
+                        <input type="text" id="firstName" name="firstName" placeholder="First name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="you@company.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone number</label>
+                        <div class="phone-input-group">
+                            <select class="country-code">
+                                <option value="TR">TR</option>
+                                <option value="US">US</option>
+                                <option value="DE">DE</option>
+                                <option value="GB">GB</option>
+                                <option value="FR">FR</option>
+                            </select>
+                            <input type="tel" id="phone" name="phone" placeholder="+90 (555) 000-00-00">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message <span class="required">*</span></label>
+                        <textarea id="message" name="message" placeholder="Leave us a message..." required></textarea>
+                    </div>
+
+                    <div class="agree-check">
+                        <input type="checkbox" id="approve" name="approve" value="approve">
+                        <label for="approve"> You agree to our friendly <a href="#">privacy policy</a>.</label>
+                      </div>
+
+                    <button type="submit" class="submit-btn">SEND A MESSAGE</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Contact Info Section -->
+        <section class="contact-info-section">
+            <div class="container">
+                <div class="contact-info-content">
+                    <span class="contact-info-label">Contact us</span>
+                    <h2 class="contact-info-title">We'd love to hear from you</h2>
+                    <span class="contact-info-description">Our friendly team is always here to chat.</span>
+                </div>
+            </div>
+        </section>
+
+      <!--   Info Card Section -->
+      <section class="info-card-section container">
+        <div class="info-card">
+            <img src="mail.svg" alt="Mail">
+            <h3 class="info-card-title">Email</h3>
+            <p class="info-card-description">Our friendly team is here to help.</p>
+            <a href="mailto:info@techmind.com" class="info-card-link">info@techmind.com</a>
+        </div>
+
+        <div class="info-card">
+            <img src="phone.svg" alt="Phone">
+            <h3 class="info-card-title">Phone</h3>
+            <p class="info-card-description">Mon-Fri from 8am to 5pm.</p>
+            <a class="info-card-link">+1 (555) 000-0000</a>
+        </div>
+
+        <div class="info-card">
+            <img src="location.svg" alt="Location">
+            <h3 class="info-card-title">Office</h3>
+            <p class="info-card-description">Let’s become penpals.</p>
+            <a class="info-card-link">100 Smith Street Collingwood VIC 3066 AU</a>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <section >
+      <div></div>
+      </section>
+    </main>
+
+</body>
+
+</html>
