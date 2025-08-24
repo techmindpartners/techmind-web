@@ -185,20 +185,32 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             title: "Meet Hakan, our Managing Partner & CEO. Leading the strategic vision and operations at Techmind Partners.",
             name: "HAKAN ARICI",
-            role: "CEO",
-            image: "assets/team-img.png"
+            role: "Managing Partner & CEO",
+            image: "assets/team/hakan_arici.jpg"
         },
         {
-            title: "Meet Sarah, our CTO. Driving innovation and technical excellence in all our technology solutions.",
-            name: "SARAH JOHNSON",
-            role: "CTO",
-            image: "assets/client-2.jpg"
+            title: "Meet Cihan, our Executive Partner responsible for the Cloud Solutions Program.",
+            name: "Cihan Tunalı",
+            role: "Executive Partner, Cloud Solutions",
+            image: "assets/team/cihan_tunali.jpg"
         },
         {
-            title: "Meet Marc, our Head of Business Development. Building strategic partnerships for sustainable growth.",
-            name: "MARC TATLISU",
-            role: "Head of Business Development",
-            image: "assets/client-3.png"
+            title: "Meet Ali, our Executive Partner responsible for Quality, Program & Project Management. ",
+            name: "Ali Oğuz",
+            role: "Executive Partner, PMO",
+            image: "assets/team/ali_oguz.jpg"
+        },
+        {
+            title: "Meet Gökhan, our Executive Partner responsible for the AI Solutions Program.",
+            name: "Gökhan Demir",
+            role: "Executive Partner, AI Solutions",
+            image: "assets/team/gokhan_demir.jpg"
+        },
+        {
+            title: "Meet Buğra, our Executive Partner responsible for the End User Solutions Program.",
+            name: "Buğra Güney",
+            role: "Executive Partner, End User Solutions",
+            image: "assets/team/bugra_guney.jpg"
         }
     ];
     
