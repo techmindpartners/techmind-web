@@ -95,6 +95,11 @@ body {
   flex-shrink: 0;
 }
 
+.highlight-text {
+  color: #0089f7;
+  font-weight: 700;
+}
+
 .contact-btn {
   background-color: #017fe4;
   color: #ffffff;
@@ -2793,7 +2798,7 @@ main {
 /* Team Testimonial Section */
 .team-testimonial {
   padding: 96px 0;
-  background-color: #ffffff;
+  background-color: #ffffff !important;
 }
 
 .testimonial-content {
@@ -2906,7 +2911,7 @@ main {
 /* Become a Partner Section */
 .become-partner {
   padding: 80px 32px;
-  background-color: #f5f5f5;
+  background-color: #ffffff;
 }
 
 .become-partner-content {
