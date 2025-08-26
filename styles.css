@@ -229,6 +229,7 @@ main {
   position: relative;
   transition: all 0.3s ease;
   cursor: pointer;
+  opacity: 0; /* Başlangıçta şeffaf, JavaScript ile ayarlanacak */
 }
 
 .pattern-block.active {

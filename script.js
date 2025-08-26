@@ -14,12 +14,32 @@ document.addEventListener('DOMContentLoaded', function() {
     const patternGrid = document.getElementById('patternGrid');
     if (patternGrid) {
         const totalBlocks = 20 * 15; // 20 columns x 15 rows
+        const cols = 20;
+        const rows = 15;
+        const centerCol = cols / 2; // 10
+        const centerRow = rows / 2; // 7.5
+        const maxDistance = Math.sqrt(Math.pow(centerCol, 2) + Math.pow(centerRow, 2)); // Maksimum mesafe
+        
         // Dağınık aktif kareler - 68 adet
         const activeBlocks = [2, 7, 13, 19, 24, 31, 38, 45, 52, 58, 65, 71, 78, 84, 91, 97, 104, 110, 117, 123, 130, 136, 143, 149, 156, 162, 169, 175, 182, 188, 195, 201, 208, 214, 221, 227, 234, 240, 247, 253, 260, 266, 273, 279, 286, 292, 299, 5, 12, 18, 25, 32, 39, 46, 53, 60, 67, 74, 81, 88, 95, 102, 109, 116, 123, 130, 137, 144, 151, 158, 165, 172, 179, 186, 193, 200, 207, 214, 221, 228, 235, 242, 249, 256, 263, 270, 277, 284, 291, 298];
         
         for (let i = 0; i < totalBlocks; i++) {
             const block = document.createElement('div');
             block.className = 'pattern-block';
+            
+            // Calculate position in grid
+            const col = i % cols;
+            const row = Math.floor(i / cols);
+            
+            // Calculate distance from center
+            const distanceFromCenter = Math.sqrt(Math.pow(col - centerCol, 2) + Math.pow(row - centerRow, 2));
+            
+            // Calculate opacity based on distance (0 at center, 1 at edges)
+            const normalizedDistance = distanceFromCenter / maxDistance;
+            const opacity = Math.min(normalizedDistance * 1.2, 1); // 1.2 çarpanı ile daha hızlı opacity artışı
+            
+            // Set the opacity
+            block.style.opacity = opacity;
             
             // Add active class to specific blocks to match the design
             if (activeBlocks.includes(i)) {
