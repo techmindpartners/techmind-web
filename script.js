@@ -9,6 +9,41 @@ document.addEventListener('DOMContentLoaded', function() {
             navToggle.classList.toggle('active');
         });
     }
+
+    // Create hero background pattern
+    const patternGrid = document.getElementById('patternGrid');
+    if (patternGrid) {
+        const totalBlocks = 20 * 15; // 20 columns x 15 rows
+        // Dağınık aktif kareler - 68 adet
+        const activeBlocks = [2, 7, 13, 19, 24, 31, 38, 45, 52, 58, 65, 71, 78, 84, 91, 97, 104, 110, 117, 123, 130, 136, 143, 149, 156, 162, 169, 175, 182, 188, 195, 201, 208, 214, 221, 227, 234, 240, 247, 253, 260, 266, 273, 279, 286, 292, 299, 5, 12, 18, 25, 32, 39, 46, 53, 60, 67, 74, 81, 88, 95, 102, 109, 116, 123, 130, 137, 144, 151, 158, 165, 172, 179, 186, 193, 200, 207, 214, 221, 228, 235, 242, 249, 256, 263, 270, 277, 284, 291, 298];
+        
+        for (let i = 0; i < totalBlocks; i++) {
+            const block = document.createElement('div');
+            block.className = 'pattern-block';
+            
+            // Add active class to specific blocks to match the design
+            if (activeBlocks.includes(i)) {
+                block.classList.add('active');
+            }
+            
+            // Add hover effect with delay
+            block.addEventListener('mouseenter', function() {
+                setTimeout(() => {
+                    this.classList.add('active');
+                }, Math.random() * 200);
+            });
+            
+            block.addEventListener('mouseleave', function() {
+                if (!activeBlocks.includes(i)) {
+                    setTimeout(() => {
+                        this.classList.remove('active');
+                    }, Math.random() * 500 + 200);
+                }
+            });
+            
+            patternGrid.appendChild(block);
+        }
+    }
     
     // Close mobile menu when clicking on a link
     const navLinks = document.querySelectorAll('.nav-link');
@@ -354,4 +389,73 @@ function toggleFAQ(element) {
         faqItem.classList.add('active');
     }
 }
+
+// Service Card Background Patterns
+document.addEventListener('DOMContentLoaded', function() {
+    const servicePatternGrids = document.querySelectorAll('.service-pattern-grid');
+    servicePatternGrids.forEach((grid, cardIndex) => {
+        const totalBlocks = 8 * 6; // 8 columns x 6 rows for service cards
+        // Daha az aktif kare - sadece bazıları koyu olsun
+        const activeBlocks = [3, 7, 12, 16, 21, 25, 30, 34, 39, 43];
+        
+        for (let i = 0; i < totalBlocks; i++) {
+            const block = document.createElement('div');
+            block.className = 'service-pattern-block';
+            if (activeBlocks.includes(i + 1)) {
+                block.classList.add('active');
+            }
+            grid.appendChild(block);
+        }
+
+        // Add hover effects for service card patterns
+        const blocks = grid.querySelectorAll('.service-pattern-block');
+        blocks.forEach((block, index) => {
+            block.addEventListener('mouseenter', () => {
+                if (!block.classList.contains('active')) {
+                    block.classList.add('active');
+                    setTimeout(() => {
+                        block.classList.remove('active');
+                    }, 800 + Math.random() * 1500);
+                }
+            });
+        });
+    });
+});
+
+// Footer Pattern Blocks
+document.addEventListener('DOMContentLoaded', function() {
+    const footerPatternGrids = document.querySelectorAll('.footer-pattern-grid');
+    footerPatternGrids.forEach((grid) => {
+        const totalBlocks = 20 * 8; // 20 columns x 8 rows
+        // Footer için aktif bloklar - dağınık pattern
+        const activeBlocks = [12, 28, 35, 51, 67, 83, 94, 112, 127, 145, 158, 176, 189, 203, 219, 235, 248, 264, 277, 293, 308, 324, 337, 353, 366, 382, 395, 411, 424, 440, 453, 469, 482, 498];
+        
+        for (let i = 0; i < totalBlocks; i++) {
+            const block = document.createElement('div');
+            block.className = 'footer-pattern-block';
+            
+            // Add active class to specific blocks
+            if (activeBlocks.includes(i)) {
+                block.classList.add('active');
+            }
+            
+            // Add hover effect with delay
+            block.addEventListener('mouseenter', function() {
+                setTimeout(() => {
+                    this.classList.add('active');
+                }, Math.random() * 200);
+            });
+            
+            block.addEventListener('mouseleave', function() {
+                if (!activeBlocks.includes(i)) {
+                    setTimeout(() => {
+                        this.classList.remove('active');
+                    }, Math.random() * 400 + 200);
+                }
+            });
+            
+            grid.appendChild(block);
+        }
+    });
+});
 
