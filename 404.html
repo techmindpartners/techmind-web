@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Techmind - Technology & Innovation</title>
+    <script>
+        // GitHub Pages SPA hack
+        // This script takes the current URL and redirects to the index page with the route as a query parameter
+        var segmentCount = 0; // Change this to the number of path segments in your base URL (usually 1 for GitHub Pages)
+        var l = window.location;
+        
+        // For GitHub Pages, if your repository name is in the URL, set segmentCount to 1
+        // For custom domains, keep it as 0
+        
+        l.replace(
+            l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+            l.pathname.split('/').slice(0, 1 + segmentCount).join('/') + '/?/' +
+            l.pathname.slice(1).split('/').slice(segmentCount).join('/').replace(/&/g, '~and~') +
+            (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+            l.hash
+        );
+    </script>
+</head>
+<body>
+    <!-- GitHub Pages SPA redirect hack -->
+</body>
+</html>

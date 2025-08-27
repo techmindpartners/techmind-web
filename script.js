@@ -1,3 +1,52 @@
+// Client-side routing for GitHub Pages
+function initializeRouting() {
+    // Simple client-side routing
+    const routes = {
+        '/': 'index.html',
+        '/engineering-solutions': 'engineering-solutions.html',
+        '/cloud-solutions': 'cloud-solutions.html',
+        '/ai-solutions': 'ai-solutions.html',
+        '/end-user-solutions': 'end-user-solutions.html',
+        '/contact': 'contact.html'
+    };
+
+    function loadPage(path) {
+        const route = routes[path];
+        if (route && route !== 'index.html') {
+            // If the page exists, redirect to it
+            window.location.href = route;
+        }
+    }
+
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', function(event) {
+        const path = window.location.pathname;
+        loadPage(path);
+    });
+
+    // Handle navigation clicks
+    document.addEventListener('click', function(event) {
+        const link = event.target.closest('a');
+        if (link && link.hostname === window.location.hostname) {
+            const path = link.pathname;
+            if (routes[path] && routes[path] !== 'index.html') {
+                event.preventDefault();
+                window.history.pushState(null, null, path);
+                loadPage(path);
+            }
+        }
+    });
+
+    // Check current path on load
+    const currentPath = window.location.pathname;
+    if (currentPath !== '/' && routes[currentPath]) {
+        loadPage(currentPath);
+    }
+}
+
+// Initialize routing when DOM is loaded
+document.addEventListener('DOMContentLoaded', initializeRouting);
+
 // Mobile Menu Toggle
 document.addEventListener('DOMContentLoaded', function() {
     const navToggle = document.getElementById('nav-toggle');
