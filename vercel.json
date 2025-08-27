@@ -1,0 +1,75 @@
+{
+  "rewrites": [
+    {
+      "source": "/engineering-solutions",
+      "destination": "/engineering-solutions.html"
+    },
+    {
+      "source": "/cloud-solutions",
+      "destination": "/cloud-solutions.html"
+    },
+    {
+      "source": "/ai-solutions",
+      "destination": "/ai-solutions.html"
+    },
+    {
+      "source": "/end-user-solutions",
+      "destination": "/end-user-solutions.html"
+    },
+    {
+      "source": "/contact", 
+      "destination": "/contact.html"
+    },
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/engineering-solutions.html",
+      "destination": "/engineering-solutions",
+      "permanent": true
+    },
+    {
+      "source": "/cloud-solutions.html",
+      "destination": "/cloud-solutions",
+      "permanent": true
+    },
+    {
+      "source": "/ai-solutions.html",
+      "destination": "/ai-solutions",
+      "permanent": true
+    },
+    {
+      "source": "/end-user-solutions.html",
+      "destination": "/end-user-solutions",
+      "permanent": true
+    },
+    {
+      "source": "/contact.html", 
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "X-Content-Type-Options", 
+          "value": "nosniff"
+        }
+      ]
+    }
+  ]
+}

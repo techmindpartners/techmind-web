@@ -1,0 +1,19 @@
+# Netlify redirects for clean URLs
+
+# Clean URL routes
+/engineering-solutions /engineering-solutions.html 200
+/cloud-solutions /cloud-solutions.html 200
+/ai-solutions /ai-solutions.html 200
+/end-user-solutions /end-user-solutions.html 200
+/contact /contact.html 200
+
+# Remove .html extensions (redirects)
+/engineering-solutions.html /engineering-solutions 301!
+/cloud-solutions.html /cloud-solutions 301!
+/ai-solutions.html /ai-solutions 301!
+/end-user-solutions.html /end-user-solutions 301!
+/contact.html /contact 301!
+/index.html / 301!
+
+# Fallback for SPA (if needed)
+/* /index.html 404
