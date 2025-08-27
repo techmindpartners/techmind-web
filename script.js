@@ -1,20 +1,27 @@
 // Client-side routing for GitHub Pages
 function initializeRouting() {
-    // Simple client-side routing
+    // Detect the base path for GitHub Pages
+    const pathSegments = window.location.pathname.split('/').filter(segment => segment);
+    const basePath = pathSegments.length > 0 && pathSegments[0] === 'techmind-web' ? '/techmind-web' : '';
+    
+    // Simple client-side routing with base path support
     const routes = {
-        '/': 'index.html',
-        '/engineering-solutions': 'engineering-solutions.html',
-        '/cloud-solutions': 'cloud-solutions.html',
-        '/ai-solutions': 'ai-solutions.html',
-        '/end-user-solutions': 'end-user-solutions.html',
-        '/contact': 'contact.html'
+        [basePath + '/']: 'index.html',
+        [basePath + '/engineering-solutions']: 'engineering-solutions.html',
+        [basePath + '/cloud-solutions']: 'cloud-solutions.html',
+        [basePath + '/ai-solutions']: 'ai-solutions.html',
+        [basePath + '/end-user-solutions']: 'end-user-solutions.html',
+        [basePath + '/contact']: 'contact.html'
     };
 
     function loadPage(path) {
-        const route = routes[path];
+        // Remove base path for route lookup
+        const routePath = path.startsWith(basePath) ? path : basePath + path;
+        const route = routes[routePath];
+        
         if (route && route !== 'index.html') {
-            // If the page exists, redirect to it
-            window.location.href = route;
+            // If the page exists, redirect to it with base path
+            window.location.href = basePath + '/' + route;
         }
     }
 
@@ -28,18 +35,20 @@ function initializeRouting() {
     document.addEventListener('click', function(event) {
         const link = event.target.closest('a');
         if (link && link.hostname === window.location.hostname) {
-            const path = link.pathname;
-            if (routes[path] && routes[path] !== 'index.html') {
+            const linkPath = link.pathname;
+            
+            // Check if this is an internal route
+            if (routes[linkPath] && routes[linkPath] !== 'index.html') {
                 event.preventDefault();
-                window.history.pushState(null, null, path);
-                loadPage(path);
+                window.history.pushState(null, null, linkPath);
+                loadPage(linkPath);
             }
         }
     });
 
     // Check current path on load
     const currentPath = window.location.pathname;
-    if (currentPath !== '/' && routes[currentPath]) {
+    if (currentPath !== basePath + '/' && routes[currentPath]) {
         loadPage(currentPath);
     }
 }
