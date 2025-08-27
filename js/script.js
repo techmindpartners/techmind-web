@@ -1,60 +1,6 @@
-// Client-side routing for GitHub Pages
-function initializeRouting() {
-    // Detect the base path for GitHub Pages
-    const pathSegments = window.location.pathname.split('/').filter(segment => segment);
-    const basePath = pathSegments.length > 0 && pathSegments[0] === 'techmind-web' ? '/techmind-web' : '';
-    
-    // Simple client-side routing with base path support
-    const routes = {
-        [basePath + '/']: 'index.html',
-        [basePath + '/engineering-solutions']: 'engineering-solutions.html',
-        [basePath + '/cloud-solutions']: 'cloud-solutions.html',
-        [basePath + '/ai-solutions']: 'ai-solutions.html',
-        [basePath + '/end-user-solutions']: 'end-user-solutions.html',
-        [basePath + '/contact']: 'contact.html'
-    };
-
-    function loadPage(path) {
-        // Remove base path for route lookup
-        const routePath = path.startsWith(basePath) ? path : basePath + path;
-        const route = routes[routePath];
-        
-        if (route && route !== 'index.html') {
-            // If the page exists, redirect to it with base path
-            window.location.href = basePath + '/' + route;
-        }
-    }
-
-    // Handle browser back/forward buttons
-    window.addEventListener('popstate', function(event) {
-        const path = window.location.pathname;
-        loadPage(path);
-    });
-
-    // Handle navigation clicks
-    document.addEventListener('click', function(event) {
-        const link = event.target.closest('a');
-        if (link && link.hostname === window.location.hostname) {
-            const linkPath = link.pathname;
-            
-            // Check if this is an internal route
-            if (routes[linkPath] && routes[linkPath] !== 'index.html') {
-                event.preventDefault();
-                window.history.pushState(null, null, linkPath);
-                loadPage(linkPath);
-            }
-        }
-    });
-
-    // Check current path on load
-    const currentPath = window.location.pathname;
-    if (currentPath !== basePath + '/' && routes[currentPath]) {
-        loadPage(currentPath);
-    }
-}
-
-// Initialize routing when DOM is loaded
-document.addEventListener('DOMContentLoaded', initializeRouting);
+// Simple directory-based routing - no complex scripts needed!
+// With directory structure, URLs work naturally:
+// /techmind-web/cloud-solutions/ -> /techmind-web/cloud-solutions/index.html
 
 // Mobile Menu Toggle
 document.addEventListener('DOMContentLoaded', function() {

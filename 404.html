@@ -5,19 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Techmind - Technology & Innovation</title>
     <script>
-        // GitHub Pages SPA hack for repository-based URLs
-        // This script takes the current URL and redirects to the index page with the route as a query parameter
-        var segmentCount = 1; // Set to 1 for GitHub Pages with repository name in URL
-        var l = window.location;
+        // Simple redirect to home for GitHub Pages
+        var path = window.location.pathname;
+        var basePath = '';
         
-        // Handle GitHub Pages URLs like: https://username.github.io/repository-name/route
-        l.replace(
-            l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-            l.pathname.split('/').slice(0, 1 + segmentCount).join('/') + '/?/' +
-            l.pathname.slice(1).split('/').slice(segmentCount).join('/').replace(/&/g, '~and~') +
-            (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-            l.hash
-        );
+        // Detect repository path
+        if (path.includes('/techmind-web/')) {
+            basePath = '/techmind-web';
+        }
+        
+        // Redirect to home
+        window.location.replace(basePath + '/');
     </script>
 </head>
 <body>
