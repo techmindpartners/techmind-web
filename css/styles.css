@@ -2911,11 +2911,12 @@ main {
 }
 
 .testimonial-title {
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 48px;
-  font-weight: 500;
-  line-height: 60px;
-  letter-spacing: -0.96px;
+  margin-top: 48px;
+  font-family: "Inter", sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: 0;
   color: #181d27;
   flex: 1;
   display: flex;
@@ -3686,8 +3687,8 @@ main {
     }
 
     .testimonial-title {
-        font-size: 40px;
-        line-height: 48px;
+        font-size: 20px;
+        line-height: 28px;
     }
 
     .become-partner-content {
@@ -3714,8 +3715,8 @@ main {
     }
 
     .testimonial-title {
-        font-size: 32px;
-        line-height: 40px;
+        font-size: 18px;
+        line-height: 26px;
         margin-bottom: 32px;
     }
 
@@ -3755,8 +3756,8 @@ main {
 
 @media (max-width: 480px) {
     .testimonial-title {
-        font-size: 28px;
-        line-height: 36px;
+        font-size: 16px;
+        line-height: 24px;
     }
 
     .testimonial-arrows {
@@ -3836,8 +3837,8 @@ main {
   }
 
   .testimonial-title {
-    font-size: 40px;
-    line-height: 48px;
+    font-size: 20px;
+    line-height: 28px;
   }
 
   .become-partner-content {
@@ -3864,8 +3865,8 @@ main {
   }
 
   .testimonial-title {
-    font-size: 32px;
-    line-height: 40px;
+    font-size: 18px;
+    line-height: 26px;
     margin-bottom: 32px;
   }
 
@@ -3905,8 +3906,8 @@ main {
 
 @media (max-width: 480px) {
   .testimonial-title {
-    font-size: 28px;
-    line-height: 36px;
+    font-size: 16px;
+    line-height: 24px;
   }
 
   .testimonial-arrows {
