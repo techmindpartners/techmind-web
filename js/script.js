@@ -483,3 +483,46 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Typeform Modal Functions
+function openTypeformModal() {
+    const modal = document.getElementById('typeform-modal');
+    const iframe = document.getElementById('typeform-iframe');
+    
+    // Set the Typeform URL
+    iframe.src = 'https://form.typeform.com/to/x8fbWMoh';
+    
+    // Show the modal
+    modal.style.display = 'block';
+    
+    // Prevent body scrolling
+    document.body.style.overflow = 'hidden';
+    
+    // Close modal when clicking outside the content
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeTypeformModal();
+        }
+    });
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.style.display === 'block') {
+            closeTypeformModal();
+        }
+    });
+}
+
+function closeTypeformModal() {
+    const modal = document.getElementById('typeform-modal');
+    const iframe = document.getElementById('typeform-iframe');
+    
+    // Hide the modal
+    modal.style.display = 'none';
+    
+    // Clear the iframe source to stop the form
+    iframe.src = '';
+    
+    // Restore body scrolling
+    document.body.style.overflow = 'auto';
+}
+

@@ -34,7 +34,7 @@ body {
 
 /* Header Styles - Based on Figma Design */
 .header {
-  background-color: #f5f5f5;
+  background-color: #ffffff;
   height: 87px;
   position: fixed;
   top: 0;
@@ -89,7 +89,7 @@ body {
   text-transform: uppercase;
   text-decoration: none;
   color: #535862;
-  opacity: 0.5;
+  opacity: 0.8;
   transition: all 0.3s ease;
   padding: 8px 0;
   white-space: nowrap;
@@ -178,51 +178,30 @@ main {
   left: 0;
   right: 0;
   bottom: 0;
-  opacity: 0.5;
+  opacity: 0.8;
   z-index: 1;
   pointer-events: auto;
 }
 
 .pattern-grid {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 1440px;
-  height: 1080px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: grid;
-  grid-template-columns: repeat(20, 72px);
-  grid-template-rows: repeat(15, 72px);
+  grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(72px, 1fr));
   gap: 0;
 }
 
-/* Responsive pattern grid */
-@media (max-width: 1440px) {
-  .pattern-grid {
-    transform: translate(-50%, -50%) scale(0.9);
-  }
-}
-
-@media (max-width: 1024px) {
-  .pattern-grid {
-    transform: translate(-50%, -50%) scale(0.7);
-  }
-}
-
-@media (max-width: 768px) {
-  .pattern-grid {
-    transform: translate(-50%, -50%) scale(0.5);
-  }
-  
-  .pattern-block {
-    width: 72px;
-    height: 72px;
-  }
-}
+/* Pattern grid is now full width and height - no scaling needed */
 
 .pattern-block {
-  width: 72px;
-  height: 72px;
+  width: 100%;
+  height: 100%;
+  min-width: 72px;
+  min-height: 72px;
   border: 1px solid rgba(1, 127, 228, 0.2);
   border-top: none;
   border-left: none;
@@ -255,7 +234,7 @@ main {
   align-items: center;
   justify-content: center;
   max-width: 1280px;
-  padding: 0 32px;
+  padding: 0 24px;
   text-align: center;
 }
 
@@ -287,12 +266,12 @@ main {
 
 .hero-subtitle {
   font-family: "Inter", sans-serif;
-  font-size: 14px;
+  font-size: 22px;
   font-weight: 500;
   line-height: 1.6;
   margin-bottom: 30px;
   color: #535862;
-  max-width: 523px;
+  max-width: 70%;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -493,40 +472,56 @@ main {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
 }
 
 .service-card {
-  background: #f9fafb;
-  padding: 2rem;
-  border-radius: 12px;
-  text-align: center;
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  border: 1px solid #E5E7EB;
   transition: all 0.3s ease;
-  border: 1px solid #e5e7eb;
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
+  overflow: hidden;
+  text-align: center;
 }
 
 .service-card:hover {
-  background: white;
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  border-color: #017fe4;
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  border-color: #0066FF;
 }
 
 .service-icon {
-  width: 70px;
-  height: 70px;
-  background-color: #017fe4;
-  border-radius: 12px;
+  width: 280px;
+  height: 157px;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 1.5rem;
+  margin: 0 auto 2rem;
+  padding: 0;
+  text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
-.service-icon i {
-  font-size: 1.75rem;
-  color: white;
+.service-icon img {
+  width: 280px;
+  height: 157px;
+  object-fit: contain;
+  border-radius: 16px;
+}
+
+.service-icon svg {
+  width: 48px;
+  height: 48px;
 }
 
 .service-card h3 {
@@ -837,7 +832,7 @@ main {
 
     .about-grid,
     .services-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
     }
 
     .section-header h2 {
@@ -1088,7 +1083,7 @@ main {
 
   .about-grid,
   .services-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
 
   .section-header h2 {
@@ -1290,7 +1285,7 @@ main {
   position: relative;
   max-width: 1620px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 24px;
 }
 
 .testimonials-slider {
@@ -1687,7 +1682,20 @@ main {
 .footer-main {
   position: relative;
   z-index: 2;
-  padding: 64px 0 48px;
+  padding: 64px 0;
+  overflow: hidden;
+  background: #F5F5F5;
+}
+
+.footer-main::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.5;
+  z-index: -1;
 }
 
 .footer-content {
@@ -1746,19 +1754,7 @@ main {
 
 
 
-.footer-watermark {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1;
-  opacity: 1;
-}
-
-.watermark-logo-img {
-  width: 1280px;
-  height: auto;
-}
+/* Footer watermark removed - using background image in footer-main instead */
 
 /* Partners Section */
 .partners {
@@ -1931,7 +1927,7 @@ main {
 
 /* Our Services Section */
 .our-services {
-  padding: 120px 0;
+  padding: 80px 0;
   background: linear-gradient(135deg, #fafafa 0%, #f0f7ff 100%);
   position: relative;
   overflow: hidden;
@@ -1956,9 +1952,6 @@ main {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 40px;
-  /* max-width: 1200px;
-    margin: 0 auto; */
-  padding: 0 20px;
 }
 
 /* Services Grid Layout */
@@ -2030,21 +2023,7 @@ main {
   border-color: #0066FF;
 }
 
-.service-icon {
-  margin-bottom: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 48px;
-  height: 48px;
-  position: relative;
-  z-index: 1;
-}
-
-.service-icon svg {
-  width: 48px;
-  height: 48px;
-}
+/* Service icon styles are now defined in the main service-card section above */
 
 .service-card h3 {
   font-family: "Inter", sans-serif;
@@ -2067,6 +2046,7 @@ main {
   flex-grow: 1;
   position: relative;
   z-index: 1;
+  text-align: justify;
 }
 
 .learn-more {
@@ -2250,6 +2230,7 @@ main {
   gap: 80px;
   max-width: 1620px;
   margin: 0 auto;
+  padding: 0 24px;
 }
 
 .metric-item {
@@ -2903,31 +2884,29 @@ main {
 
 /* Team Testimonial Section */
 .team-testimonial {
-  padding: 96px 0;
+  padding: 80px 0;
   background-color: #ffffff;
 }
 
 .testimonial-content {
   display: flex;
   gap: 64px;
-  align-items: center;
+  align-items: stretch;
   max-width: 1620px;
   margin: 0 auto;
   justify-content: center;
-
-  display: flex;
-  max-width: 1620px;
-  padding: 0 32px;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  gap: 64px 64px;
+  padding: 0 24px;
   align-self: stretch;
   flex-wrap: wrap;
+  min-height: 500px;
 }
 
 .testimonial-text {
   flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   /* max-width: 600px; */
 }
 
@@ -2938,7 +2917,10 @@ main {
   line-height: 60px;
   letter-spacing: -0.96px;
   color: #181d27;
-  margin-bottom: 48px;
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 96px;
 }
 
 .testimonial-attribution {
@@ -2998,7 +2980,7 @@ main {
 .testimonial-image {
   flex: 1;
   max-width: 576px;
-  aspect-ratio: 576/720;
+  min-height: 500px;
   background: linear-gradient(
     135deg,
     rgba(1, 127, 228, 0.2) 0%,
@@ -3016,7 +2998,7 @@ main {
 
 /* Become a Partner Section */
 .become-partner {
-  padding: 80px 32px;
+  padding: 80px 24px;
   background-color: #f5f5f5;
 }
 
@@ -3126,12 +3108,6 @@ main {
   background-color: #f5f5f5;
 }
 
-.footer-main {
-  position: relative;
-  padding: 64px 0;
-  overflow: hidden;
-  background: #F5F5F5;
-}
 
 .footer-background-pattern {
   position: absolute;
@@ -3185,7 +3161,6 @@ main {
   justify-content: space-between;
   margin-bottom: 48px;
   position: relative;
-  padding: 0 36px;
   z-index: 1;
 }
 
@@ -3193,10 +3168,6 @@ main {
   max-width: 320px;
 }
 
-.footer-logo-img {
-  height: 32px;
-  margin-bottom: 24px;
-}
 
 .footer-description {
   font-family: "Inter", sans-serif;
@@ -3232,21 +3203,7 @@ main {
   opacity: 1;
 }
 
-.footer-watermark {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 64px;
-  z-index: 1;
-}
-
-.footer-watermark-img {
-  max-width: 1280px;
-  height: auto;
-  width: 100%;
-  object-fit: contain;
-  opacity: 1;
-}
+/* Footer watermark styles removed */
 
 .footer-bottom {
   padding: 48px 0;
@@ -3525,7 +3482,7 @@ main {
 .platform-sub-container-1 .platform-sub-container-first {
   display: flex;
   max-width: 560px;
-  padding: 0 32px;
+  padding: 0 24px;
   align-items: flex-start;
   flex: 1 0 0;
 }
@@ -3645,7 +3602,7 @@ main {
 .faq-sub-container-1 {
   display: flex;
   max-width: 2000px;
-  padding: 0 32px;
+  padding: 0 24px;
   flex-direction: column;
   align-items: center;
   gap: 64px;
@@ -3662,7 +3619,7 @@ main {
 .faq-sub-container-2 {
   display: flex;
   max-width: 2000px;
-  padding: 0 32px;
+  padding: 0 24px;
   flex-direction: column;
   align-items: flex-start;
   gap: 32px;
@@ -3748,9 +3705,7 @@ main {
         text-align: center;
     }
 
-    .footer-watermark-img {
-        max-width: 960px;
-    }
+    /* Footer watermark removed */
 }
 
 @media (max-width: 768px) {
@@ -3789,9 +3744,7 @@ main {
         gap: 16px;
     }
 
-    .footer-watermark-img {
-        max-width: 640px;
-    }
+    /* Footer watermark removed */
 
     .footer-bottom-content {
         flex-direction: column;
@@ -3825,9 +3778,7 @@ main {
         line-height: 28px;
     }
 
-    .footer-watermark-img {
-        max-width: 320px;
-    }
+    /* Footer watermark removed */
 
     /* Clients Section */
     .clients-slider {
@@ -3857,7 +3808,6 @@ main {
     .services-grid {
         grid-template-columns: 1fr;
         gap: 30px;
-        padding: 0 15px;
     }
 
     .services-grid {
@@ -3905,9 +3855,7 @@ main {
     text-align: center;
   }
 
-  .footer-watermark-img {
-    max-width: 960px;
-  }
+  /* Footer watermark removed */
 }
 
 @media (max-width: 768px) {
@@ -3946,9 +3894,7 @@ main {
     gap: 16px;
   }
 
-  .footer-watermark-img {
-    max-width: 640px;
-  }
+  /* Footer watermark removed */
 
   .footer-bottom-content {
     flex-direction: column;
@@ -3982,9 +3928,7 @@ main {
     line-height: 28px;
   }
 
-  .footer-watermark-img {
-    max-width: 320px;
-  }
+  /* Footer watermark removed */
 
   /* Clients Section */
   .clients-slider {
@@ -4015,9 +3959,8 @@ main {
   }
 
   .services-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-    padding: 0 15px;
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
   }
 
   .service-card {
@@ -4209,6 +4152,142 @@ main {
     overflow: hidden;
 }
 
+/* Contact section background pattern */
+.contact-section .hero-background-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.8;
+    z-index: 1;
+    pointer-events: auto;
+}
+
+.contact-section .pattern-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(72px, 1fr));
+    gap: 0;
+}
+
+.contact-section .pattern-block {
+    width: 100%;
+    height: 100%;
+    min-width: 72px;
+    min-height: 72px;
+    border: 1px solid rgba(1, 127, 228, 0.2);
+    border-top: none;
+    border-left: none;
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.contact-section .pattern-block.active {
+    background-color: rgba(1, 127, 228, 0.15);
+}
+
+        .contact-section .pattern-block:hover {
+            background-color: rgba(1, 127, 228, 0.15);
+            transform: scale(0.95);
+            box-shadow: 0 0 20px rgba(1, 127, 228, 0.3);
+        }
+
+/* Typeform Modal Styles */
+.typeform-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease-out;
+}
+
+.typeform-modal-content {
+    position: relative;
+    margin: 20px;
+    width: calc(100% - 40px);
+    height: calc(100% - 40px);
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease-out;
+}
+
+.typeform-close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 10000;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.typeform-close-btn:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { 
+        opacity: 0;
+        transform: translateY(50px) scale(0.95);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Mobile responsive for modal */
+@media (max-width: 768px) {
+    .typeform-modal-content {
+        margin: 10px;
+        width: calc(100% - 20px);
+        height: calc(100% - 20px);
+        border-radius: 12px;
+    }
+    
+    .typeform-close-btn {
+        top: 12px;
+        right: 12px;
+        width: 36px;
+        height: 36px;
+        font-size: 20px;
+    }
+}
+
 .contact-background {
     position: absolute;
     top: 0;
@@ -4221,15 +4300,19 @@ main {
 .contact-content-group {
     position: relative;
     z-index: 2;
-    max-width: 600px;
+    max-width: 500px;
     width: 100%;
     margin: 0 auto;
     padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 80vh;
 }
 
 .contact-header {
     text-align: center;
-    margin-bottom: 48px;
+    margin-bottom: 64px;
 }
 
 .contact-label {
@@ -4262,7 +4345,7 @@ main {
 }
 
 .form-group {
-    margin-bottom: 24px;
+    margin-bottom: 32px;
 }
 
 .form-group label {
@@ -4495,6 +4578,22 @@ main {
     .info-card-section {
       flex-direction:column ;
     }
+    
+    /* Service Icon Mobile Responsive */
+    .service-icon {
+        width: 100%;
+        max-width: 280px;
+        height: auto;
+        margin: 0 auto 1.5rem;
+        padding: 0;
+    }
+    
+    .service-icon img {
+        width: 100%;
+        height: auto;
+        max-width: 280px;
+        object-fit: contain;
+    }
 }
 
 .info-card {
@@ -4504,11 +4603,13 @@ main {
 }
 
 .info-card-section {
-    display: flex;
-    gap: 32px;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 96px;
+  display: flex
+  ;
+      gap: 192px;
+      align-items: center;
+      padding-bottom: 96px;
+      flex-direction: row;
+      justify-content: center;
 }
 
 .info-card-title {
@@ -4540,4 +4641,63 @@ main {
     font-weight: 600;
     line-height: 24px; 
     text-decoration: none;
+}
+
+/* Partners Grid Styles */
+.partners-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.partner-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
+}
+
+.partner-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    border-color: #017fe4;
+}
+
+.partner-logo {
+    max-width: 100%;
+    max-height: 80px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+
+/* Responsive Partners Grid */
+@media (max-width: 1024px) {
+    .partners-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    .partners-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    
+    .partner-item {
+        padding: 24px;
+    }
+    
+    .partner-logo {
+        max-height: 60px;
+    }
 }

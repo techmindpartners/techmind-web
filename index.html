@@ -26,12 +26,13 @@
             <div class="container">
                 <div class="nav-brand">
                     <a href="./">
-                                                    <img src="assets/icons/logo.svg" alt="Techmind" class="logo-img">
+                        <img src="assets/icons/logo.svg" alt="Techmind" class="logo-img">
                     </a>
                 </div>
 
                 <nav class="nav-menu" id="nav-menu">
                     <ul class="nav-list">
+                        <li><a href="#home" class="nav-link">HOME</a></li>
                         <li><a href="#services" class="nav-link active">SERVICES</a></li>
                         <li><a href="#partners" class="nav-link">PARTNERS</a></li>
                         <li><a href="#clients" class="nav-link">CLIENTS</a></li>
@@ -73,7 +74,7 @@
                         acting as a central hub for collaboration and growth.
                     </p>
                     <div class="hero-buttons">
-                        <a href="#partners" class="btn btn-primary">BECOME A PARTNER</a>
+                        <a href="#" onclick="openTypeformModal(); return false;" class="btn btn-primary">BECOME A PARTNER</a>
                     </div>
                 </div>
             </div>
@@ -86,31 +87,27 @@
                     <p class="section-subtitle">Our Partners</p>
                     <h2>Collaborating with Industry Leaders</h2>
                 </div>
-                <div class="partners-floating">
-                    <!-- Background skewed card -->
-                    <div class="background-skewed-card">
-                        <img src="assets/images/hero.png" alt="Background" class="background-img">
-                        <div class="background-overlay"></div>
+                <div class="partners-grid">
+                    <!-- Row 1 -->
+                    <div class="partner-item">
+                        <img src="assets/partners/dp-300x229.png" alt="DP" class="partner-logo">
+                    </div>
+                    <div class="partner-item">
+                        <img src="assets/partners/shr-300x150.jpg" alt="SHR" class="partner-logo">
+                    </div>
+                    <div class="partner-item">
+                        <img src="assets/partners/huaweicloud-150x150.png" alt="Huawei Cloud" class="partner-logo">
                     </div>
 
-                    <!-- Partner cards -->
-                    <div class="partner-card partner-card-1" style="transform: rotate(-15deg);">
-                        <img src="assets/logos/dp-logo-4c2201.png" alt="DP" class="partner-img">
+                    <!-- Row 2 -->
+                    <div class="partner-item">
+                        <img src="assets/partners/valven-e1742346412599-300x86.jpg" alt="Valven" class="partner-logo">
                     </div>
-                    <div class="partner-card partner-card-2" style="transform: rotate(-7deg);">
-                        <img src="assets/logos/shr-logo-393d36.jpg" alt="SHR" class="partner-img">
+                    <div class="partner-item">
+                        <img src="assets/partners/talentops-300x71.png" alt="TalentOps" class="partner-logo">
                     </div>
-                    <div class="partner-card partner-card-3" style="transform: rotate(-7deg);">
-                        <img src="assets/logos/huawei-logo-73eae4.png" alt="Huawei" class="partner-img">
-                    </div>
-                    <div class="partner-card partner-card-4" style="transform: rotate(7deg);">
-                        <img src="assets/logos/valven-logo-448b8a.jpg" alt="Valven" class="partner-img">
-                    </div>
-                    <div class="partner-card partner-card-5" style="transform: rotate(7deg);">
-                        <img src="assets/logos/talentops-logo-2bd3b8.png" alt="TalentOps" class="partner-img">
-                    </div>
-                    <div class="partner-card partner-card-6" style="transform: rotate(15deg);">
-                        <img src="assets/logos/virgosol-logo-6f7015.png" alt="Virgosol" class="partner-img">
+                    <div class="partner-item">
+                        <img src="assets/partners/Virgosol-300x65.png" alt="Virgosol" class="partner-logo">
                     </div>
                 </div>
             </div>
@@ -118,7 +115,7 @@
 
         <!-- Our Clients -->
         <section class="clients-section" id="clients">
-            <div class="container" style=" max-width: 95% !important;">
+            <div class="container">
                 <div class="section-header">
                     <p class="section-subtitle">Our Clients</p>
                     <h2>Trusted by Leading Organizations</h2>
@@ -204,29 +201,14 @@
                             </div>
                         </div>
                         <div class="service-icon">
-                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <!-- Engineering/Development Icon - Code & Tools -->
-                                <rect x="8" y="8" width="32" height="32" rx="4" stroke="#0066FF" stroke-width="2.5" />
-                                <path d="M16 16l4 4-4 4M24 16l4 4-4 4" stroke="#0066FF" stroke-width="2.5"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                                <path d="M20 24h8" stroke="#0066FF" stroke-width="2" stroke-linecap="round" />
-                                <circle cx="36" cy="12" r="6" fill="#0066FF" />
-                                <path d="M33 12l2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
+                            <img src="assets/programs/engineering.png" alt="Engineering Solutions" width="280"
+                                height="157">
                         </div>
                         <h3>Engineering Solutions Program</h3>
-                        <p>We deliver end-to-end bespoke technology solutions that are scalable, cost effective, and
-                            tailored to address unique business challenges across diverse industries. Whether serving
-                            the Energy sector or Fintech, implementing digital transformation strategies or developing
-                            bespoke IoT applications, our customized approach drives efficiency and innovation precisely
-                            where your business needs it most.</p>
-                        <a href="./pages/engineering-solutions/" class="learn-more">Learn more <svg width="16" height="16"
-                                viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg></a>
+                        <p>We deliver end-to-end, scalable, and cost-effective technology solutions tailored to unique
+                            business challenges. From Energy to Fintech, digital transformation to IoT, our customized
+                            approach drives efficiency and innovation exactly where you need it most.</p>
+
                     </div>
 
                     <div class="service-card">
@@ -237,30 +219,14 @@
                             </div>
                         </div>
                         <div class="service-icon">
-                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <!-- Cloud Solutions Icon - Modern Cloud with Data -->
-                                <path d="M12 20c0-6.627 5.373-12 12-12s12 5.373 12 12c0 1.5-.276 2.94-.776 4.26"
-                                    stroke="#0066FF" stroke-width="2.5" stroke-linecap="round" />
-                                <path d="M8 28c0-4.418 3.582-8 8-8s8 3.582 8 8c0 1.5-.276 2.94-.776 4.26"
-                                    stroke="#0066FF" stroke-width="2.5" stroke-linecap="round" />
-                                <path d="M16 36c0-2.209 1.791-4 4-4s4 1.791 4 4" stroke="#0066FF" stroke-width="2.5"
-                                    stroke-linecap="round" />
-                                <circle cx="36" cy="12" r="6" fill="#0066FF" />
-                                <path d="M33 12l2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
+                            <img src="assets/programs/cloud.png" alt="Cloud Solutions" width="280" height="157">
                         </div>
                         <h3>Cloud Solutions Program</h3>
                         <p>We optimize your cloud infrastructure through strategic resource allocation, eliminating
                             unnecessary expenses while significantly enhancing performance. By identifying
                             inefficiencies and implementing targeted improvements, we transform your cloud environment
-                            into a more cost-effective and powerful business asset.</p>
-                        <a href="./pages/cloud-solutions/" class="learn-more">Learn more <svg width="16" height="16" viewBox="0 0 16 16"
-                                fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg></a>
+                            into a more cost-effective and powerful business asset</p>
+
                     </div>
 
                     <div class="service-card">
@@ -271,26 +237,13 @@
                             </div>
                         </div>
                         <div class="service-icon">
-                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <!-- Mobile Applications Icon - Smartphone with App -->
-                                <rect x="16" y="8" width="16" height="32" rx="4" stroke="#0066FF" stroke-width="2.5" />
-                                <rect x="18" y="12" width="12" height="8" rx="2" fill="#0066FF" opacity="0.2" />
-                                <circle cx="24" cy="34" r="2" fill="#0066FF" />
-                                <path d="M20 12h8" stroke="#0066FF" stroke-width="2" stroke-linecap="round" />
-                                <path d="M22 26h4M22 28h4" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round" />
-                            </svg>
+                            <img src="assets/programs/end-user.png" alt="End User Solutions" width="280" height="157">
                         </div>
                         <h3>End User Solutions Program</h3>
-                        <p>We craft intuitive, high-performance digital solutions that captivate users and drive
-                            meaningful engagement. Our user-centric design approach creates compelling digital
-                            experiences that keep customers returning, maximize interaction time, and transform every
-                            touchpoint into an opportunity to strengthen brand loyalty and satisfaction.</p>
-                        <a href="./pages/end-user-solutions/" class="learn-more">Learn more <svg width="16" height="16" viewBox="0 0 16 16"
-                                fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg></a>
+                        <p>We deliver intuitive, high-performance digital solutions that captivate users and drive
+                            engagement. Our user-centric design turns every touchpoint into an opportunity to boost
+                            loyalty and satisfaction.</p>
+
                     </div>
 
                     <div class="service-card">
@@ -301,30 +254,12 @@
                             </div>
                         </div>
                         <div class="service-icon">
-                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <!-- R&D Program Icon - Innovation & Research -->
-                                <path d="M24 8c8.837 0 16 7.163 16 16s-7.163 16-16 16S8 32.837 8 24s7.163-16 16-16z"
-                                    stroke="#0066FF" stroke-width="2.5" />
-                                <path d="M24 16v8l6 6" stroke="#0066FF" stroke-width="2.5" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                                <path d="M18 18l12-12" stroke="#0066FF" stroke-width="2" stroke-linecap="round" />
-                                <circle cx="38" cy="14" r="6" fill="#0066FF" />
-                                <path d="M33 12l2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
+                            <img src="assets/programs/ai.png" alt="AI Solutions" width="280" height="157">
                         </div>
                         <h3>AI Solutions Program</h3>
-                        <p>We fuel your competitive advantage through AI-driven innovation strategies and
-                            cutting-edge AI-powered solutions. By identifying emerging trends and technologies before
-                            they become mainstream, we position your organization at the forefront of industry
-                            evolution, ensuring you remain a market leader rather than playing catch-up with
-                            competitors.</p>
-                        <a href="./pages/ai-solutions/" class="learn-more">Learn more <svg width="16" height="16" viewBox="0 0 16 16"
-                                fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg></a>
+                        <p>We fuel your competitive edge with AI-driven strategies and powerful solutions. By spotting
+                            trends early, we keep you ahead of industry shifts—ensuring you lead, not follow.</p>
+
                     </div>
                 </div>
             </div>
@@ -573,9 +508,9 @@
             style="background: linear-gradient(135deg, #fafafa 0%, #f0f7ff 100%);">
             <div class="container">
                 <div class="section-header text-center">
-                    <p class="section-subtitle">The team</p>
-                    <h2>Meet the team behind techmind</h2>
-                    <p class="section-description">Meet the experts driving innovation and excellence at techmind.</p>
+                    <p class="section-subtitle">The Team</p>
+                    <h2>Behind TechMind’s Success</h2>
+                    <p class="section-description">Experts driving innovation and excellence at Techmind.</p>
                 </div>
 
                 <div class="testimonial-content">
@@ -614,19 +549,16 @@
 
         <!-- Become a Partner Section -->
         <section class="become-partner">
-            <div class="container">
-                <div class="become-partner-content">
-                    <div class="become-partner-background">
-                        <div class="grid-pattern"></div>
-                        <div class="circle-decoration"></div>
-                    </div>
-                    <div class="become-partner-text">
-                        <h2 class="become-partner-title">Would you like to join forces with us?</h2>
-                        <p class="become-partner-subtitle">Desc.</p>
-                    </div>
-                    <div class="become-partner-actions">
-                        <a href="./contact/" class="btn btn-partner">BECOME A PARTNER</a>
-                    </div>
+            <div class="become-partner-content">
+                <div class="become-partner-background">
+                    <div class="grid-pattern"></div>
+                    <div class="circle-decoration"></div>
+                </div>
+                <div class="become-partner-text">
+                    <h2 class="become-partner-title">Would you like to join forces with us?</h2>
+                </div>
+                <div class="become-partner-actions">
+                    <a href="#" onclick="openTypeformModal(); return false;" class="btn btn-partner">BECOME A PARTNER</a>
                 </div>
             </div>
         </section>
@@ -652,6 +584,7 @@
                     </div>
                     <div class="footer-navigation">
                         <nav class="footer-nav">
+                            <a href="#home" class="footer-nav-link">HOME</a>
                             <a href="#services" class="footer-nav-link">SERVICES</a>
                             <a href="#team" class="footer-nav-link">TEAM</a>
                             <a href="#partners" class="footer-nav-link">PARTNERS</a>
@@ -660,9 +593,7 @@
                     </div>
                 </div>
             </div>
-            <div class="footer-watermark">
-                <img src="assets/logos/techmind_footer_logo.png" alt="Techmind" class="footer-watermark-img">
-            </div>
+            <!-- Footer watermark removed - now using background image in footer-main -->
         </div>
         <div class="footer-bottom">
             <div class="container">
@@ -671,7 +602,7 @@
                         <p>&copy; 2025 Techmind. All rights reserved.</p>
                     </div>
                     <div class="footer-social">
-                        <a href="#" class="social-link" aria-label="Twitter">
+                        <!-- <a href="#" class="social-link" aria-label="Twitter">
                             <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -679,8 +610,8 @@
                                     fill="#717680" />
                             </svg>
 
-                        </a>
-                        <a href="#" class="social-link" aria-label="LinkedIn">
+                        </a> -->
+                        <a href="https://www.linkedin.com/company/techmindpartners/" target="_blank" class="social-link" aria-label="LinkedIn">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path
                                     d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
@@ -694,6 +625,14 @@
             </div>
         </div>
     </footer>
+
+    <!-- Typeform Popup Modal -->
+    <div id="typeform-modal" class="typeform-modal">
+        <div class="typeform-modal-content">
+            <button class="typeform-close-btn" onclick="closeTypeformModal()">&times;</button>
+            <iframe id="typeform-iframe" src="" width="100%" height="100%" frameborder="0"></iframe>
+        </div>
+    </div>
 
     <!-- No complex scripts needed! Directory-based routing works naturally -->
 
