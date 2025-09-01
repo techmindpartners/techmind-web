@@ -199,21 +199,31 @@
             // Create pattern grid for contact background
             const contactPatternGrid = document.querySelector('.contact-section .pattern-grid');
             if (contactPatternGrid) {
-                // Calculate grid size based on viewport
-                const gridColumns = Math.ceil(window.innerWidth / 72);
-                const gridRows = Math.ceil(window.innerHeight / 72);
+                // Responsive grid dimensions based on screen width (same as main pattern)
+                let cols, rows;
+                const screenWidth = window.innerWidth;
+                
+                if (screenWidth >= 1920) {
+                    cols = 30; rows = 15;
+                } else if (screenWidth >= 1440) {
+                    cols = 24; rows = 12;
+                } else if (screenWidth >= 1024) {
+                    cols = 20; rows = 10;
+                } else if (screenWidth >= 768) {
+                    cols = 16; rows = 8;
+                } else {
+                    cols = 12; rows = 8;
+                }
+                
+                const totalBlocks = cols * rows;
                 
                 // Create grid blocks
-                for (let i = 0; i < gridColumns * gridRows; i++) {
+                for (let i = 0; i < totalBlocks; i++) {
                     const block = document.createElement('div');
                     block.className = 'pattern-block';
                     block.style.opacity = Math.random() > 0.7 ? '0.3' : '0';
                     contactPatternGrid.appendChild(block);
                 }
-                
-                // Update grid template
-                contactPatternGrid.style.gridTemplateColumns = `repeat(${gridColumns}, 1fr)`;
-                contactPatternGrid.style.gridTemplateRows = `repeat(${gridRows}, 1fr)`;
             }
         });
 

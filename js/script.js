@@ -17,15 +17,36 @@ document.addEventListener('DOMContentLoaded', function() {
     // Create hero background pattern
     const patternGrid = document.getElementById('patternGrid');
     if (patternGrid) {
-        const totalBlocks = 20 * 15; // 20 columns x 15 rows
-        const cols = 20;
-        const rows = 15;
-        const centerCol = cols / 2; // 10
-        const centerRow = rows / 2; // 7.5
-        const maxDistance = Math.sqrt(Math.pow(centerCol, 2) + Math.pow(centerRow, 2)); // Maksimum mesafe
+        // Responsive grid dimensions based on screen width
+        let cols, rows;
+        const screenWidth = window.innerWidth;
         
-        // Dağınık aktif kareler - 68 adet
-        const activeBlocks = [2, 7, 13, 19, 24, 31, 38, 45, 52, 58, 65, 71, 78, 84, 91, 97, 104, 110, 117, 123, 130, 136, 143, 149, 156, 162, 169, 175, 182, 188, 195, 201, 208, 214, 221, 227, 234, 240, 247, 253, 260, 266, 273, 279, 286, 292, 299, 5, 12, 18, 25, 32, 39, 46, 53, 60, 67, 74, 81, 88, 95, 102, 109, 116, 123, 130, 137, 144, 151, 158, 165, 172, 179, 186, 193, 200, 207, 214, 221, 228, 235, 242, 249, 256, 263, 270, 277, 284, 291, 298];
+        if (screenWidth >= 1920) {
+            cols = 30; rows = 15;
+        } else if (screenWidth >= 1440) {
+            cols = 24; rows = 12;
+        } else if (screenWidth >= 1024) {
+            cols = 20; rows = 10;
+        } else if (screenWidth >= 768) {
+            cols = 16; rows = 8;
+        } else {
+            cols = 12; rows = 8;
+        }
+        
+        const totalBlocks = cols * rows;
+        const centerCol = cols / 2;
+        const centerRow = rows / 2;
+        const maxDistance = Math.sqrt(Math.pow(centerCol, 2) + Math.pow(centerRow, 2));
+        
+        // Generate active blocks proportionally (about 20% of total blocks)
+        const activeBlockCount = Math.floor(totalBlocks * 0.2);
+        const activeBlocks = [];
+        for (let i = 0; i < activeBlockCount; i++) {
+            const randomIndex = Math.floor(Math.random() * totalBlocks);
+            if (!activeBlocks.includes(randomIndex)) {
+                activeBlocks.push(randomIndex);
+            }
+        }
         
         for (let i = 0; i < totalBlocks; i++) {
             const block = document.createElement('div');
@@ -67,6 +88,33 @@ document.addEventListener('DOMContentLoaded', function() {
             
             patternGrid.appendChild(block);
         }
+        
+        // Handle window resize to regenerate grid
+        let resizeTimeout;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                const newScreenWidth = window.innerWidth;
+                let newCols, newRows;
+                
+                if (newScreenWidth >= 1920) {
+                    newCols = 30; newRows = 15;
+                } else if (newScreenWidth >= 1440) {
+                    newCols = 24; newRows = 12;
+                } else if (newScreenWidth >= 1024) {
+                    newCols = 20; newRows = 10;
+                } else if (newScreenWidth >= 768) {
+                    newCols = 16; newRows = 8;
+                } else {
+                    newCols = 12; newRows = 8;
+                }
+                
+                // Only regenerate if grid size changed significantly
+                if (Math.abs(newCols - cols) > 2 || Math.abs(newRows - rows) > 1) {
+                    location.reload();
+                }
+            }, 500); // Debounce resize events
+        });
     }
     
     // Close mobile menu when clicking on a link
