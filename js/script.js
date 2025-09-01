@@ -111,6 +111,27 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // Check for cross-page navigation scroll target
+    const scrollToSection = sessionStorage.getItem('scrollToSection');
+    if (scrollToSection) {
+        // Clear the stored section
+        sessionStorage.removeItem('scrollToSection');
+        
+        // Wait a bit for page to fully load, then scroll
+        setTimeout(() => {
+            const targetSection = document.querySelector('#' + scrollToSection);
+            if (targetSection) {
+                const headerHeight = document.querySelector('.header').offsetHeight;
+                const targetPosition = targetSection.offsetTop - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }, 100);
+    }
 });
 
 // Contact Form Handling

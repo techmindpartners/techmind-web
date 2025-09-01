@@ -216,6 +216,26 @@
                 contactPatternGrid.style.gridTemplateRows = `repeat(${gridRows}, 1fr)`;
             }
         });
+
+        // Cross-page navigation with scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const crossPageLinks = document.querySelectorAll('a[href^="../#"]');
+            
+            crossPageLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    const sectionId = href.split('#')[1];
+                    
+                    // Store the target section in sessionStorage
+                    if (sectionId) {
+                        sessionStorage.setItem('scrollToSection', sectionId);
+                    }
+                    
+                    // Let the normal navigation happen
+                    window.location.href = href;
+                });
+            });
+        });
     </script>
 </body>
 
