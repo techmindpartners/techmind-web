@@ -595,3 +595,76 @@ function closeTypeformModal() {
     document.body.style.overflow = 'auto';
 }
 
+// Brain mouse interaction
+document.addEventListener('DOMContentLoaded', function() {
+    const heroContent = document.querySelector('.hero-content');
+    const brainImage = document.querySelector('.brain-image');
+    
+    if (heroContent && brainImage) {
+        // Store original transform
+        let isAnimating = false;
+        let animationFrame = null;
+        let currentX = 0;
+        let currentY = 0;
+        let targetX = 0;
+        let targetY = 0;
+        
+        heroContent.addEventListener('mousemove', function(e) {
+            const rect = heroContent.getBoundingClientRect();
+            const brainRect = brainImage.getBoundingClientRect();
+            
+            // Get brain center position
+            const brainCenterX = brainRect.left + brainRect.width / 2;
+            const brainCenterY = brainRect.top + brainRect.height / 2;
+            
+            // Calculate distance and direction from mouse to brain center
+            const deltaX = e.clientX - brainCenterX;
+            const deltaY = e.clientY - brainCenterY;
+            
+            // Normalize and apply movement (max 12px in any direction)
+            const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+            const maxDistance = 400; // React within 400px radius
+            
+            if (distance < maxDistance) {
+                const factor = (1 - distance / maxDistance); // Linear relationship
+                targetX = (deltaX / distance) * factor * 12; // Max 12px movement
+                targetY = (deltaY / distance) * factor * 12;
+            } else {
+                targetX = 0;
+                targetY = 0;
+            }
+            
+            if (!isAnimating) {
+                isAnimating = true;
+                animate();
+            }
+        });
+        
+        function animate() {
+            // Smooth interpolation (faster response)
+            currentX += (targetX - currentX) * 0.2;
+            currentY += (targetY - currentY) * 0.2;
+            
+            // Apply transform
+            brainImage.style.transform = `translateX(calc(-50% + ${currentX}px)) translateY(${currentY}px)`;
+            
+            // Continue animation if needed
+            if (Math.abs(targetX - currentX) > 0.01 || Math.abs(targetY - currentY) > 0.01) {
+                animationFrame = requestAnimationFrame(animate);
+            } else {
+                isAnimating = false;
+            }
+        }
+        
+        // Reset on mouse leave
+        heroContent.addEventListener('mouseleave', function() {
+            targetX = 0;
+            targetY = 0;
+            if (!isAnimating) {
+                isAnimating = true;
+                animate();
+            }
+        });
+    }
+});
+

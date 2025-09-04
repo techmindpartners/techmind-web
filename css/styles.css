@@ -159,7 +159,7 @@ main {
   margin-top: 87px;
 }
 
-/* Hero Section */
+/* Hero Section - Old styles disabled
 .hero {
   background-color: #F8F9FA;
   color: #181d27;
@@ -169,7 +169,7 @@ main {
   padding: 80px 0;
   position: relative;
   overflow: hidden;
-}
+} */
 
 /* Hero Background Pattern */
 .hero-background-pattern {
@@ -272,12 +272,13 @@ main {
   text-align: center;
 }
 
-.hero-content {
+/* .hero-content {
   max-width: 941px;
   text-align: center;
   margin: 0 auto;
-}
+} */
 
+/* Old hero title styles disabled
 .hero-title {
   font-family: "Space Grotesk", sans-serif;
   font-size: 96px;
@@ -310,14 +311,14 @@ main {
   margin-right: auto;
   text-align: center;
   letter-spacing: 0.07px;
-}
+} */
 
-.hero-buttons {
+/* .hero-buttons {
   display: flex;
   justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
-}
+} */
 
 .btn {
   padding: 12px 24px;
@@ -3085,7 +3086,7 @@ main {
   left: 220px;
   width: 840px;
   height: 527px;
-  background: url("logo.svg") center/contain no-repeat;
+  background: url("../assets/icons/logo.svg") center/contain no-repeat;
   opacity: 0.1;
 }
 
@@ -4768,5 +4769,262 @@ main {
     
     .partner-logo {
         max-height: 60px;
+    }
+}
+
+/* Hero Section - Figma Design Exact Copy */
+.hero {
+    background-color: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero .container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.hero-content {
+    position: relative;
+    min-height: 735px;
+    width: 100%;
+    overflow: hidden;
+    background: white;
+}
+
+/* Chip Background - Layer 1 */
+.chip-background {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 800px;
+    height: 735px;
+    z-index: 1;
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.chip-background .chip-image {
+    position: absolute;
+    left: 50%;
+    top: 22.86%;
+    bottom: 9.12%;
+    transform: translateX(-50%);
+    width: auto;
+    height: calc(100% - 22.86% - 9.12%);
+    object-fit: contain;
+}
+
+/* Brain Visual - Layer 3 (Top) */
+.brain-container {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 800px;
+    height: 735px;
+    z-index: 3;
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-out 0.4s forwards;
+}
+
+.brain-image {
+    position: absolute;
+    left: calc(50% + 20px);
+    top: 9.25%;
+    bottom: 36.33%;
+    transform: translateX(-50%);
+    width: auto;
+    height: calc(100% - 9.25% - 36.33%);
+    aspect-ratio: 1;
+    object-fit: contain;
+    /* animation removed - only mouse movement */
+    transition: transform 0.2s ease-out;
+}
+
+/* Text Content - Layer 2 */
+.hero-text {
+    position: absolute;
+    left: 64px;
+    top: 168px;
+    z-index: 2;
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-out 0.2s forwards;
+}
+
+.hero-title {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 64px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: #181D27;
+    letter-spacing: -1.96px;
+    margin: 0;
+    text-align: left;
+}
+
+.hero-subtitle {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #535862;
+    max-width: 600px;
+    text-align: left;
+    letter-spacing: 0.07px;
+    margin: 24px 0 0 0;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.btn.btn-primary {
+    background-color: #017fe4;
+    color: white;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn.btn-primary:hover {
+    background-color: #0066CC;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(1, 127, 228, 0.3);
+}
+
+/* Page load animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design for Hero */
+@media (max-width: 1400px) {
+    .hero-title {
+        font-size: 56px;
+    }
+    
+    .chip-background, .brain-container {
+        width: 700px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .hero-title {
+        font-size: 48px;
+    }
+    
+    .chip-background, .brain-container {
+        width: 600px;
+        height: 600px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .hero-content {
+        min-height: 600px;
+    }
+    
+    .hero-text {
+        position: relative;
+        left: 32px;
+        top: 100px;
+        z-index: 4;
+        opacity: 0;
+        animation: fadeInUp 0.5s ease-out 0.2s forwards;
+    }
+    
+    .hero-title {
+        font-size: 44px;
+    }
+    
+    .hero-subtitle {
+        width: auto;
+        max-width: 500px;
+        text-align: left;
+        font-size: 15px;
+    }
+    
+    .chip-background, .brain-container {
+        width: 500px;
+        height: 500px;
+        opacity: 0.8;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content {
+        min-height: 500px;
+    }
+    
+    .hero-text {
+        left: 24px;
+        top: 80px;
+        max-width: calc(100% - 48px);
+    }
+    
+    .hero-title {
+        font-size: 48px;
+    }
+    
+    
+    .hero-subtitle {
+        font-size: 16px;
+        max-width: 400px;
+    }
+    
+    .chip-background, .brain-container {
+        width: 400px;
+        height: 400px;
+        opacity: 0.6;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content {
+        min-height: 400px;
+    }
+    
+    .hero-text {
+        left: 16px;
+        top: 60px;
+        max-width: calc(100% - 32px);
+    }
+    
+    .hero-title {
+        font-size: 36px;
+    }
+    
+    
+    .hero-subtitle {
+        font-size: 14px;
+        max-width: 300px;
+    }
+    
+    .chip-background, .brain-container {
+        width: 300px;
+        height: 300px;
+        opacity: 0.5;
+    }
+    
+    .btn.btn-primary {
+        font-size: 14px;
+        padding: 10px 20px;
     }
 }
