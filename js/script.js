@@ -483,74 +483,7 @@ function toggleFAQ(element) {
     }
 }
 
-// Service Card Background Patterns
-document.addEventListener('DOMContentLoaded', function() {
-    const servicePatternGrids = document.querySelectorAll('.service-pattern-grid');
-    servicePatternGrids.forEach((grid, cardIndex) => {
-        const totalBlocks = 8 * 6; // 8 columns x 6 rows for service cards
-        // Daha az aktif kare - sadece bazıları koyu olsun
-        const activeBlocks = [3, 7, 12, 16, 21, 25, 30, 34, 39, 43];
-        
-        for (let i = 0; i < totalBlocks; i++) {
-            const block = document.createElement('div');
-            block.className = 'service-pattern-block';
-            if (activeBlocks.includes(i + 1)) {
-                block.classList.add('active');
-            }
-            grid.appendChild(block);
-        }
 
-        // Add hover effects for service card patterns
-        const blocks = grid.querySelectorAll('.service-pattern-block');
-        blocks.forEach((block, index) => {
-            block.addEventListener('mouseenter', () => {
-                if (!block.classList.contains('active')) {
-                    block.classList.add('active');
-                    setTimeout(() => {
-                        block.classList.remove('active');
-                    }, 800 + Math.random() * 1500);
-                }
-            });
-        });
-    });
-});
-
-// Footer Pattern Blocks
-document.addEventListener('DOMContentLoaded', function() {
-    const footerPatternGrids = document.querySelectorAll('.footer-pattern-grid');
-    footerPatternGrids.forEach((grid) => {
-        const totalBlocks = 20 * 8; // 20 columns x 8 rows
-        // Footer için aktif bloklar - dağınık pattern
-        const activeBlocks = [12, 28, 35, 51, 67, 83, 94, 112, 127, 145, 158, 176, 189, 203, 219, 235, 248, 264, 277, 293, 308, 324, 337, 353, 366, 382, 395, 411, 424, 440, 453, 469, 482, 498];
-        
-        for (let i = 0; i < totalBlocks; i++) {
-            const block = document.createElement('div');
-            block.className = 'footer-pattern-block';
-            
-            // Add active class to specific blocks
-            if (activeBlocks.includes(i)) {
-                block.classList.add('active');
-            }
-            
-            // Add hover effect with delay
-            block.addEventListener('mouseenter', function() {
-                setTimeout(() => {
-                    this.classList.add('active');
-                }, Math.random() * 200);
-            });
-            
-            block.addEventListener('mouseleave', function() {
-                if (!activeBlocks.includes(i)) {
-                    setTimeout(() => {
-                        this.classList.remove('active');
-                    }, Math.random() * 400 + 200);
-                }
-            });
-            
-            grid.appendChild(block);
-        }
-    });
-});
 
 // Typeform Modal Functions
 function openTypeformModal() {
