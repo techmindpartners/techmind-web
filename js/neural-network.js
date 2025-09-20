@@ -13,15 +13,15 @@ class NeuralNetworkAnimation {
     this.mouse = { x: 0, y: 0 };
     
     this.config = {
-      particleCount: 50,
+      particleCount: 30,        // Azaltıldı: 50 → 30
       particleRadius: 2.5,
-      connectionDistance: 150,
+      connectionDistance: 120,  // Azaltıldı: 150 → 120
       lineWidth: 1.5,
-      particleSpeed: 0.4,
-      connectionOpacity: 0.4,
-      particleOpacity: 0.8,
-      pulseSpeed: 0.02,
-      pulseAmplitude: 0.3
+      particleSpeed: 0.3,       // Azaltıldı: 0.4 → 0.3
+      connectionOpacity: 0.3,   // Azaltıldı: 0.4 → 0.3
+      particleOpacity: 0.7,     // Azaltıldı: 0.8 → 0.7
+      pulseSpeed: 0.015,        // Azaltıldı: 0.02 → 0.015
+      pulseAmplitude: 0.2       // Azaltıldı: 0.3 → 0.2
     };
     
     this.init();
@@ -34,7 +34,19 @@ class NeuralNetworkAnimation {
     this.setupCanvas();
     this.createParticles();
     this.setupEventListeners();
+    this.setupVisibilityHandler();
     this.startAnimation();
+  }
+  
+  setupVisibilityHandler() {
+    // Sayfa görünürlük değişikliklerini dinle
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        this.stopAnimation();
+      } else {
+        this.startAnimation();
+      }
+    });
   }
   
   setupCanvas() {
@@ -229,6 +241,12 @@ class NeuralNetworkAnimation {
     if (this.animationId) {
       cancelAnimationFrame(this.animationId);
     }
+    
+    // Sayfa görünür değilse animasyonu başlatma
+    if (document.hidden) {
+      return;
+    }
+    
     this.animate();
   }
   

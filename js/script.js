@@ -219,16 +219,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Header scroll effect
+// Header scroll effect with throttling
 document.addEventListener('DOMContentLoaded', function() {
     const header = document.querySelector('.header');
+    let scrollTimeout;
     
     window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-            header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-        } else {
-            header.style.boxShadow = 'none';
+        if (scrollTimeout) {
+            cancelAnimationFrame(scrollTimeout);
         }
+        scrollTimeout = requestAnimationFrame(function() {
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
     });
 });
 
@@ -258,7 +264,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    window.addEventListener('scroll', updateActiveLink);
+    // Throttle scroll event for better performance
+    let activeLinkTimeout;
+    window.addEventListener('scroll', function() {
+        if (activeLinkTimeout) {
+            cancelAnimationFrame(activeLinkTimeout);
+        }
+        activeLinkTimeout = requestAnimationFrame(updateActiveLink);
+    });
     updateActiveLink(); // Initial call
 });
 
@@ -370,8 +383,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 testimonialTitle.textContent = data.title;
                 testimonialName.textContent = data.name;
                 testimonialRole.textContent = data.role;
-                testimonialImg.src = data.image;
-                testimonialImg.alt = data.name;
+                
+                // Update both WebP source and fallback image
+                const picture = testimonialImg.closest('picture');
+                if (picture) {
+                    const source = picture.querySelector('source');
+                    const img = picture.querySelector('img');
+                    
+                    // Update WebP source
+                    if (source) {
+                        source.srcset = data.image;
+                    }
+                    
+                    // Update fallback image (remove .webp extension)
+                    const fallbackImage = data.image.replace('.webp', '.jpg');
+                    img.src = fallbackImage;
+                    img.alt = data.name;
+                } else {
+                    // Fallback if no picture element
+                    testimonialImg.src = data.image;
+                    testimonialImg.alt = data.name;
+                }
                 
                 // Fade back in
                 sliderContainer.style.opacity = '1';
