@@ -5,8 +5,13 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
+    "start:optimized": "node server-optimized.js",
     "dev": "nodemon server.js",
-    "build": "echo 'No build step required for static site'",
+    "dev:optimized": "nodemon server-optimized.js",
+    "build": "node css/build/optimize.js",
+    "build:critical": "node css/build/critical-extractor.js",
+    "build:performance": "node css/build/performance-monitor.js",
+    "build:all": "npm run build:critical && npm run build && npm run build:performance",
     "serve": "http-server . -p 8080 -c-1 --cors"
   },
   "dependencies": {

@@ -307,11 +307,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Team Testimonial Slider
+// Team Testimonial Slider with Drag & Drop
 document.addEventListener('DOMContentLoaded', function() {
     const testimonialData = [
         {
-            title: "Meet Hakan, our Managing Partner & CEO. Leading the strategic vision and operations at Techmind Partners, Hakan is dedicated to delivering cutting-edge technology solutions that solve complex business challenges and drive sustainable growth. Under his leadership, we focus on optimizing technology costs to help organizations build efficient, future-ready infrastructures—an approach we call Cost-smart™ Technology.",
+            title: "Meet Hakan, our Managing Partner & CEO. Leading the strategic vision and operations at Techmind Partners, Hakan is dedicated to delivering cutting-edge technology solutions that solve complex business challenges and drive sustainable growth. Under his leadership, we focus on optimizing technology costs to help organizations build efficient, future-ready infrastructures—an approach we call Cost-smart™ Technology. His visionary approach and commitment to excellence continue to drive our company forward.",
             name: "HAKAN ARICI",
             role: "Managing Partner & CEO",
             image: "assets/team/hakan_arici.jpg"
@@ -329,13 +329,13 @@ document.addEventListener('DOMContentLoaded', function() {
             image: "assets/team/ali_oguz.jpg"
         },
         {
-            title: "Meet Gökhan, our Executive Partner responsible for the AI Solutions Program. A distinguished software architect, Gökhan leads our research and development efforts with a sharp focus on innovation and technical excellence. His deep expertise in system design, scalable architecture, and emerging technologies fuels the creation of cutting-edge solutions that drive real business impact. With a strategic mindset and a passion for experimentation, Gökhan continuously pushes the boundaries of what's possible, laying the foundation for the next generation of transformative products.",
+            title: "Meet Gökhan, our Executive Partner responsible for the AI Solutions Program. A distinguished software architect, Gökhan leads our research and development efforts with a sharp focus on innovation and technical excellence. His deep expertise in system design, scalable architecture, and emerging technologies fuels the creation of cutting-edge solutions that drive real business impact. With a strategic mindset and a passion for experimentation, Gökhan continuously pushes the boundaries of what's possible.",
             name: "Gökhan Demir",
             role: "Executive Partner, AI Solutions",
             image: "assets/team/gokhan_demir.jpg"
         },
         {
-            title: "Meet Buğra, our Executive Partner responsible for the End User Solutions Program. With deep expertise in mobile development, Buğra leads our engineering efforts to build high-performance, user-friendly mobile applications. His passion for innovation and seamless user experiences ensures that our mobile solutions stay ahead of the curve. When he's not optimizing app performance, you’ll find him exploring the latest tech trends or enjoying outdoor adventures, bringing both precision and creativity to our team.",
+            title: "Meet Buğra, our Executive Partner responsible for the End User Solutions Program. With deep expertise in mobile development, Buğra leads our engineering efforts to build high-performance, user-friendly mobile applications. His passion for innovation and seamless user experiences ensures that our mobile solutions stay ahead of the curve. When he's not optimizing app performance, you'll find him exploring the latest tech trends or enjoying outdoor adventures, bringing both precision and creativity to our team.",
             name: "Buğra Güney",
             role: "Executive Partner, End User Solutions",
             image: "assets/team/bugra_guney.jpg"
@@ -343,6 +343,7 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
     
     let currentTestimonial = 0;
+    let autoAdvanceInterval;
     
     const testimonialTitle = document.querySelector('.testimonial-title');
     const testimonialName = document.querySelector('.testimonial-name');
@@ -350,14 +351,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const testimonialImg = document.querySelector('.testimonial-img');
     const prevBtn = document.querySelector('.testimonial-prev');
     const nextBtn = document.querySelector('.testimonial-next');
+    const sliderContainer = document.getElementById('team-slider');
     
-    if (testimonialTitle && testimonialName && testimonialRole && testimonialImg && prevBtn && nextBtn) {
+    
+    if (testimonialTitle && testimonialName && testimonialRole && testimonialImg && prevBtn && nextBtn && sliderContainer) {
+        let isDragging = false;
+        let startX = 0;
+        let currentX = 0;
+        let startTime = 0;
+        
         function updateTestimonial() {
             const data = testimonialData[currentTestimonial];
             
             // Add fade out effect
-            const testimonialContent = document.querySelector('.testimonial-content');
-            testimonialContent.style.opacity = '0.7';
+            sliderContainer.style.opacity = '0.7';
             
             setTimeout(() => {
                 testimonialTitle.textContent = data.title;
@@ -367,7 +374,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 testimonialImg.alt = data.name;
                 
                 // Fade back in
-                testimonialContent.style.opacity = '1';
+                sliderContainer.style.opacity = '1';
             }, 200);
         }
         
@@ -381,17 +388,168 @@ document.addEventListener('DOMContentLoaded', function() {
             updateTestimonial();
         }
         
-        // Event listeners
-        nextBtn.addEventListener('click', nextTestimonial);
-        prevBtn.addEventListener('click', prevTestimonial);
+        function startAutoAdvance() {
+            if (autoAdvanceInterval) {
+                clearInterval(autoAdvanceInterval);
+            }
+            autoAdvanceInterval = setInterval(nextTestimonial, 8000);
+        }
         
-        // Auto-advance testimonials every 8 seconds
-        setInterval(nextTestimonial, 8000);
+        function stopAutoAdvance() {
+            if (autoAdvanceInterval) {
+                clearInterval(autoAdvanceInterval);
+                autoAdvanceInterval = null;
+            }
+        }
         
-        // Add smooth transition
-        const testimonialContent = document.querySelector('.testimonial-content');
-        if (testimonialContent) {
-            testimonialContent.style.transition = 'opacity 0.3s ease';
+        function resetAutoAdvance() {
+            stopAutoAdvance();
+            setTimeout(startAutoAdvance, 3000); // Restart after 3 seconds
+        }
+        
+        // Button event listeners
+        nextBtn.addEventListener('click', () => {
+            nextTestimonial();
+            resetAutoAdvance();
+        });
+        
+        prevBtn.addEventListener('click', () => {
+            prevTestimonial();
+            resetAutoAdvance();
+        });
+        
+        // Touch/Mouse drag events
+        function handleStart(e) {
+            isDragging = true;
+            startX = e.type === 'mousedown' ? e.clientX : e.touches[0].clientX;
+            startTime = Date.now();
+            stopAutoAdvance();
+            sliderContainer.style.cursor = 'grabbing';
+            sliderContainer.style.userSelect = 'none';
+        }
+        
+        function handleMove(e) {
+            if (!isDragging) return;
+            
+            e.preventDefault();
+            currentX = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
+        }
+        
+        function handleEnd(e) {
+            if (!isDragging) return;
+            
+            isDragging = false;
+            sliderContainer.style.cursor = 'grab';
+            sliderContainer.style.userSelect = '';
+            
+            const deltaX = currentX - startX;
+            const deltaTime = Date.now() - startTime;
+            const velocity = Math.abs(deltaX) / deltaTime;
+            
+            // Minimum swipe distance or velocity to trigger slide
+            if (Math.abs(deltaX) > 50 || velocity > 0.5) {
+                stopAutoAdvance(); // Stop current timer before changing
+                if (deltaX > 0) {
+                    prevTestimonial();
+                } else {
+                    nextTestimonial();
+                }
+                resetAutoAdvance();
+            } else {
+                // If no slide occurred, just restart auto-advance
+                resetAutoAdvance();
+            }
+        }
+        
+        // Mouse events
+        sliderContainer.addEventListener('mousedown', handleStart);
+        document.addEventListener('mousemove', handleMove);
+        document.addEventListener('mouseup', handleEnd);
+        
+        // Touch events
+        sliderContainer.addEventListener('touchstart', handleStart, { passive: false });
+        sliderContainer.addEventListener('touchmove', handleMove, { passive: false });
+        sliderContainer.addEventListener('touchend', handleEnd);
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (sliderContainer.closest(':hover') || document.activeElement === prevBtn || document.activeElement === nextBtn) {
+                if (e.key === 'ArrowLeft') {
+                    stopAutoAdvance();
+                    prevTestimonial();
+                    resetAutoAdvance();
+                } else if (e.key === 'ArrowRight') {
+                    stopAutoAdvance();
+                    nextTestimonial();
+                    resetAutoAdvance();
+                }
+            }
+        });
+        
+        // Initialize
+        sliderContainer.style.transition = 'opacity 0.3s ease';
+        sliderContainer.style.cursor = 'grab';
+        startAutoAdvance();
+    }
+});
+
+// Metrics Counter Animation
+document.addEventListener('DOMContentLoaded', function() {
+    const metricNumbers = document.querySelectorAll('.metric-number');
+    
+    if (metricNumbers.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = entry.target;
+                    const finalValue = target.textContent;
+                    
+                    // Extract number and symbol
+                    const match = finalValue.match(/([0-9,]+)\+?/);
+                    if (match) {
+                        const number = parseInt(match[1].replace(/,/g, ''));
+                        const symbol = finalValue.includes('$') ? '$' : '';
+                        const suffix = finalValue.includes('+') ? '+' : '';
+                        
+                        // Animate counter
+                        animateCounter(target, 0, number, symbol, suffix, 2000);
+                        
+                        // Stop observing this element
+                        observer.unobserve(target);
+                    }
+                }
+            });
+        }, {
+            threshold: 0.3
+        });
+        
+        metricNumbers.forEach(number => {
+            observer.observe(number);
+        });
+        
+        function animateCounter(element, start, end, symbol, suffix, duration) {
+            const startTime = performance.now();
+            const startValue = start;
+            const endValue = end;
+            
+            function updateCounter(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // Easing function for smooth animation
+                const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                const currentValue = Math.floor(startValue + (endValue - startValue) * easeOutQuart);
+                
+                // Format number with commas
+                const formattedValue = currentValue.toLocaleString();
+                element.textContent = symbol + formattedValue + suffix;
+                
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
+                }
+            }
+            
+            requestAnimationFrame(updateCounter);
         }
     }
 });
@@ -528,76 +686,5 @@ function closeTypeformModal() {
     document.body.style.overflow = 'auto';
 }
 
-// Brain mouse interaction
-document.addEventListener('DOMContentLoaded', function() {
-    const heroContent = document.querySelector('.hero-content');
-    const brainImage = document.querySelector('.brain-image');
-    
-    if (heroContent && brainImage) {
-        // Store original transform
-        let isAnimating = false;
-        let animationFrame = null;
-        let currentX = 0;
-        let currentY = 0;
-        let targetX = 0;
-        let targetY = 0;
-        
-        heroContent.addEventListener('mousemove', function(e) {
-            const rect = heroContent.getBoundingClientRect();
-            const brainRect = brainImage.getBoundingClientRect();
-            
-            // Get brain center position
-            const brainCenterX = brainRect.left + brainRect.width / 2;
-            const brainCenterY = brainRect.top + brainRect.height / 2;
-            
-            // Calculate distance and direction from mouse to brain center
-            const deltaX = e.clientX - brainCenterX;
-            const deltaY = e.clientY - brainCenterY;
-            
-            // Normalize and apply movement (max 12px in any direction)
-            const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-            const maxDistance = 400; // React within 400px radius
-            
-            if (distance < maxDistance) {
-                const factor = (1 - distance / maxDistance); // Linear relationship
-                targetX = (deltaX / distance) * factor * 12; // Max 12px movement
-                targetY = (deltaY / distance) * factor * 12;
-            } else {
-                targetX = 0;
-                targetY = 0;
-            }
-            
-            if (!isAnimating) {
-                isAnimating = true;
-                animate();
-            }
-        });
-        
-        function animate() {
-            // Smooth interpolation (faster response)
-            currentX += (targetX - currentX) * 0.2;
-            currentY += (targetY - currentY) * 0.2;
-            
-            // Apply transform
-            brainImage.style.transform = `translateX(calc(-50% + ${currentX}px)) translateY(${currentY}px)`;
-            
-            // Continue animation if needed
-            if (Math.abs(targetX - currentX) > 0.01 || Math.abs(targetY - currentY) > 0.01) {
-                animationFrame = requestAnimationFrame(animate);
-            } else {
-                isAnimating = false;
-            }
-        }
-        
-        // Reset on mouse leave
-        heroContent.addEventListener('mouseleave', function() {
-            targetX = 0;
-            targetY = 0;
-            if (!isAnimating) {
-                isAnimating = true;
-                animate();
-            }
-        });
-    }
-});
+// Brain mouse interaction removed - no more brain movement animation
 

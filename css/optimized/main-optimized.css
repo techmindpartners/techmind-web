@@ -1,0 +1,372 @@
+/* Optimized CSS - Performance & Modern Features */
+
+/* Import Base Styles */
+@import url('./base/variables.css');
+@import url('./base/reset.css');
+@import url('./base/typography.css');
+@import url('./base/mixins.css');
+
+/* Import Layout */
+@import url('./layout/container.css');
+@import url('./layout/grid.css');
+
+/* Import Components */
+@import url('./components/buttons.css');
+@import url('./components/cards.css');
+@import url('./components/header.css');
+@import url('./components/hero.css');
+@import url('./components/sections.css');
+@import url('./components/footer.css');
+
+/* Import Utilities */
+@import url('./utilities/utilities.css');
+
+/* Critical CSS - Above the fold */
+.hero {
+  background-color: var(--color-background-hero);
+  color: var(--color-text-primary);
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-4xl) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__title {
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-6xl);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-lg);
+  letter-spacing: -1.96px;
+}
+
+.hero__subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Performance Optimizations */
+.hero__chip-background,
+.hero__brain-container {
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.hero__pattern-block {
+  will-change: transform, background-color;
+}
+
+/* Modern CSS Features */
+.hero__pattern-grid {
+  container-type: inline-size;
+}
+
+@container (min-width: 768px) {
+  .hero__pattern-grid {
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+  }
+}
+
+@container (min-width: 1024px) {
+  .hero__pattern-grid {
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+  }
+}
+
+/* Logical Properties */
+.section {
+  padding-block: var(--spacing-4xl);
+  padding-inline: 0;
+}
+
+.section__header {
+  text-align: center;
+  margin-block-end: var(--spacing-3xl);
+}
+
+/* CSS Grid with Subgrid (when supported) */
+@supports (grid-template-rows: subgrid) {
+  .services__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-xl);
+    grid-template-rows: subgrid;
+  }
+}
+
+/* Container Queries */
+@container (min-width: 600px) {
+  .testimonial__card {
+    width: 350px;
+  }
+}
+
+/* Modern Selectors */
+.hero__dot:nth-child(odd) {
+  animation-duration: 8s;
+}
+
+.hero__dot:nth-child(even) {
+  animation-duration: 6s;
+}
+
+/* Focus Management */
+.hero__pattern-block:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .hero__dot,
+  .hero__chip-background,
+  .hero__brain-container,
+  .become-partner__circle-decoration {
+    animation: none;
+  }
+  
+  .hero__pattern-block:hover {
+    transform: none;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .hero__pattern-block {
+    border-color: currentColor;
+  }
+  
+  .hero__dot {
+    background-color: currentColor;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .hero__floating-dots,
+  .hero__chip-background,
+  .hero__brain-container,
+  .hero__background-pattern {
+    display: none;
+  }
+  
+  .hero {
+    background: white;
+    color: black;
+    min-height: auto;
+    padding: 1cm 0;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #e2e8f0;
+    --color-background: #1a1a1a;
+    --color-background-secondary: #2a2a2a;
+    --color-background-hero: #1a1a1a;
+  }
+}
+
+/* Performance Hints */
+.hero__pattern-block,
+.hero__dot,
+.testimonial__card,
+.partners__item {
+  contain: layout style paint;
+}
+
+/* Scroll-driven Animations (when supported) */
+@supports (animation-timeline: scroll()) {
+  .hero__title {
+    animation: slideInFromTop linear;
+    animation-timeline: scroll();
+    animation-range: 0% 50%;
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Modern Layout Techniques */
+.section__header {
+  display: grid;
+  place-items: center;
+  gap: var(--spacing-md);
+}
+
+/* CSS Custom Properties for Dynamic Theming */
+.theme--dark {
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #e2e8f0;
+  --color-background: #1a1a1a;
+  --color-background-secondary: #2a2a2a;
+}
+
+.theme--light {
+  --color-text-primary: #181d27;
+  --color-text-secondary: #535862;
+  --color-background: #ffffff;
+  --color-background-secondary: #f8fafc;
+}
+
+/* Optimized Animations */
+.hero__dot {
+  animation: float 6s ease-in-out infinite;
+  animation-fill-mode: both;
+}
+
+.hero__chip-background {
+  animation: fadeInUp 0.5s ease-out forwards;
+  animation-fill-mode: both;
+}
+
+.hero__brain-container {
+  animation: fadeInUp 0.5s ease-out 0.4s forwards;
+  animation-fill-mode: both;
+}
+
+/* GPU Acceleration */
+.hero__pattern-block:hover {
+  transform: scale(0.95) translateZ(0);
+  will-change: transform;
+}
+
+/* Efficient Transitions */
+.hero__pattern-block {
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Memory Efficient Selectors */
+.hero__dot:not(:hover) {
+  opacity: 0.3;
+}
+
+.hero__dot:hover {
+  opacity: 0.8;
+}
+
+/* Responsive Images */
+.hero__chip-image,
+.hero__brain-image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 800 / 735;
+  object-fit: contain;
+}
+
+/* Modern CSS Grid */
+.partners__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-xl);
+  align-items: center;
+  container-type: inline-size;
+}
+
+/* Efficient Flexbox */
+.metrics__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-xl);
+}
+
+/* Modern Button Styles */
+.btn--partner {
+  background: var(--color-text-light);
+  color: var(--color-primary);
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg) var(--spacing-2xl);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all var(--transition-normal);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn--partner:hover {
+  background: var(--color-background-secondary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn--partner:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Accessibility Improvements */
+.hero__pattern-block[aria-pressed="true"] {
+  background-color: rgba(1, 127, 228, 0.15);
+}
+
+.hero__pattern-block:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Performance Monitoring */
+.hero__pattern-block {
+  contain: layout style paint;
+  will-change: transform, background-color;
+}
+
+/* Modern CSS Features */
+@supports (backdrop-filter: blur(10px)) {
+  .typeform-modal {
+    backdrop-filter: blur(5px);
+  }
+}
+
+@supports (aspect-ratio: 1) {
+  .hero__chip-image,
+  .hero__brain-image {
+    aspect-ratio: 800 / 735;
+  }
+}
+
+/* Efficient Media Queries */
+@media (max-width: 768px) {
+  .hero__title {
+    font-size: var(--font-size-4xl);
+    letter-spacing: -0.5px;
+  }
+  
+  .section__title {
+    font-size: var(--font-size-3xl);
+  }
+}
+
+@media (max-width: 425px) {
+  .hero__chip-background,
+  .hero__brain-container {
+    display: none;
+  }
+  
+  .hero__title {
+    font-size: var(--font-size-3xl);
+  }
+}

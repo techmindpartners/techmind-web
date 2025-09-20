@@ -1,0 +1,583 @@
+/* Modern CSS Features - Future-Proof Implementation */
+
+/* CSS Grid with Subgrid Support */
+@supports (grid-template-rows: subgrid) {
+  .services__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    grid-template-rows: subgrid;
+  }
+  
+  .testimonials__slider {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    grid-template-rows: subgrid;
+  }
+}
+
+/* Container Queries */
+@supports (container-type: inline-size) {
+  .hero__pattern-grid {
+    container-type: inline-size;
+  }
+  
+  @container (min-width: 768px) {
+    .hero__pattern-grid {
+      grid-template-columns: repeat(16, 1fr);
+      grid-template-rows: repeat(8, 1fr);
+    }
+  }
+  
+  @container (min-width: 1024px) {
+    .hero__pattern-grid {
+      grid-template-columns: repeat(20, 1fr);
+      grid-template-rows: repeat(10, 1fr);
+    }
+  }
+  
+  @container (min-width: 1440px) {
+    .hero__pattern-grid {
+      grid-template-columns: repeat(24, 1fr);
+      grid-template-rows: repeat(12, 1fr);
+    }
+  }
+  
+  @container (min-width: 1920px) {
+    .hero__pattern-grid {
+      grid-template-columns: repeat(30, 1fr);
+      grid-template-rows: repeat(15, 1fr);
+    }
+  }
+}
+
+/* CSS Logical Properties */
+.modern-layout {
+  margin-inline: auto;
+  padding-inline: var(--spacing-lg);
+  border-inline: 1px solid var(--color-border-light);
+  border-block: 1px solid var(--color-border-light);
+}
+
+.modern-spacing {
+  margin-inline-start: var(--spacing-md);
+  margin-inline-end: var(--spacing-md);
+  padding-block-start: var(--spacing-lg);
+  padding-block-end: var(--spacing-lg);
+}
+
+/* CSS Custom Properties with Fallbacks */
+.modern-theming {
+  background-color: var(--color-primary, #017fe4);
+  color: var(--color-text-light, #ffffff);
+  border: 1px solid var(--color-primary, #017fe4);
+}
+
+/* CSS Cascade Layers */
+@layer base, components, utilities;
+
+@layer base {
+  .reset-styles {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  .component-styles {
+    background-color: var(--color-background);
+    border-radius: var(--radius-md);
+  }
+}
+
+@layer utilities {
+  .utility-styles {
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* Modern Selectors */
+.modern-selectors {
+  /* :is() pseudo-class */
+  .modern-selectors :is(h1, h2, h3, h4, h5, h6) {
+    font-family: var(--font-family-secondary);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-tight);
+  }
+  
+  /* :where() pseudo-class */
+  .modern-selectors :where(.btn, .nav-link, .contact-btn) {
+    transition: all var(--transition-normal);
+  }
+  
+  /* :has() pseudo-class */
+  .modern-selectors .card:has(.card__image) {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* :focus-visible pseudo-class */
+  .modern-selectors .btn:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
+
+/* CSS Grid Advanced Features */
+.advanced-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: var(--spacing-lg);
+  container-type: inline-size;
+}
+
+.advanced-grid__item {
+  display: grid;
+  place-items: center;
+  min-height: 200px;
+  background-color: var(--color-background-secondary);
+  border-radius: var(--radius-lg);
+}
+
+/* CSS Subgrid */
+@supports (grid-template-rows: subgrid) {
+  .subgrid-layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+  }
+  
+  .subgrid-item {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-rows: subgrid;
+    gap: var(--spacing-md);
+  }
+}
+
+/* CSS Container Queries for Components */
+@supports (container-type: inline-size) {
+  .card {
+    container-type: inline-size;
+  }
+  
+  @container (min-width: 400px) {
+    .card__content {
+      flex-direction: row;
+    }
+  }
+  
+  @container (min-width: 600px) {
+    .card__content {
+      padding: var(--spacing-xl);
+    }
+  }
+}
+
+/* CSS Aspect Ratio */
+.aspect-ratio-modern {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  background-color: var(--color-background-secondary);
+  border-radius: var(--radius-lg);
+}
+
+.aspect-ratio-square {
+  aspect-ratio: 1 / 1;
+}
+
+.aspect-ratio-portrait {
+  aspect-ratio: 3 / 4;
+}
+
+.aspect-ratio-landscape {
+  aspect-ratio: 4 / 3;
+}
+
+/* CSS Backdrop Filter */
+.backdrop-blur {
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.backdrop-saturate {
+  backdrop-filter: saturate(180%);
+}
+
+.backdrop-brightness {
+  backdrop-filter: brightness(1.2);
+}
+
+/* CSS Clip Path */
+.clip-path-modern {
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+
+.clip-path-circle {
+  clip-path: circle(50%);
+}
+
+.clip-path-ellipse {
+  clip-path: ellipse(50% 30% at 50% 50%);
+}
+
+/* CSS Mask */
+.mask-modern {
+  mask: linear-gradient(45deg, black 50%, transparent 50%);
+  mask-size: 20px 20px;
+}
+
+.mask-image {
+  mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="white"/></svg>');
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+}
+
+/* CSS Scroll Snap */
+.scroll-snap-container {
+  scroll-snap-type: x mandatory;
+  overflow-x: auto;
+  display: flex;
+  gap: var(--spacing-lg);
+}
+
+.scroll-snap-item {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  width: 300px;
+}
+
+.scroll-snap-center {
+  scroll-snap-align: center;
+}
+
+/* CSS Scroll Behavior */
+.smooth-scroll {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
+}
+
+/* CSS Overscroll Behavior */
+.overscroll-contain {
+  overscroll-behavior: contain;
+}
+
+.overscroll-none {
+  overscroll-behavior: none;
+}
+
+/* CSS Content Visibility */
+.content-visibility {
+  content-visibility: auto;
+  contain-intrinsic-size: 200px;
+}
+
+.content-visibility-hidden {
+  content-visibility: hidden;
+}
+
+/* CSS Containment */
+.contain-layout {
+  contain: layout;
+}
+
+.contain-paint {
+  contain: paint;
+}
+
+.contain-size {
+  contain: size;
+}
+
+.contain-style {
+  contain: style;
+}
+
+.contain-strict {
+  contain: strict;
+}
+
+.contain-content {
+  contain: content;
+}
+
+/* CSS Will-Change Optimization */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-scroll {
+  will-change: scroll-position;
+}
+
+.will-change-contents {
+  will-change: contents;
+}
+
+.will-change-auto {
+  will-change: auto;
+}
+
+/* CSS Transform 3D */
+.transform-3d {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.transform-3d-item {
+  transform: rotateY(45deg) rotateX(15deg);
+  backface-visibility: hidden;
+}
+
+/* CSS Filter Effects */
+.filter-blur {
+  filter: blur(5px);
+}
+
+.filter-brightness {
+  filter: brightness(1.2);
+}
+
+.filter-contrast {
+  filter: contrast(1.5);
+}
+
+.filter-grayscale {
+  filter: grayscale(100%);
+}
+
+.filter-hue-rotate {
+  filter: hue-rotate(90deg);
+}
+
+.filter-saturate {
+  filter: saturate(2);
+}
+
+.filter-sepia {
+  filter: sepia(100%);
+}
+
+.filter-drop-shadow {
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+/* CSS Mix Blend Modes */
+.blend-multiply {
+  mix-blend-mode: multiply;
+}
+
+.blend-screen {
+  mix-blend-mode: screen;
+}
+
+.blend-overlay {
+  mix-blend-mode: overlay;
+}
+
+.blend-difference {
+  mix-blend-mode: difference;
+}
+
+.blend-exclusion {
+  mix-blend-mode: exclusion;
+}
+
+/* CSS Isolation */
+.isolate {
+  isolation: isolate;
+}
+
+.isolate-auto {
+  isolation: auto;
+}
+
+/* CSS Backdrop Filter with Fallbacks */
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+@supports (backdrop-filter: blur(10px)) {
+  .modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+  }
+}
+
+/* CSS Grid with Dynamic Sizing */
+.dynamic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: var(--spacing-lg);
+}
+
+/* CSS Flexbox with Gap */
+.flex-gap {
+  display: flex;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+.flex-gap-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+/* CSS Custom Properties with JavaScript Integration */
+.interactive-theme {
+  --primary-hue: 210;
+  --primary-saturation: 100%;
+  --primary-lightness: 50%;
+  --primary-color: hsl(var(--primary-hue), var(--primary-saturation), var(--primary-lightness));
+}
+
+.interactive-theme .btn--primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+/* CSS Scroll-driven Animations (when supported) */
+@supports (animation-timeline: scroll()) {
+  .scroll-animation {
+    animation: fadeIn linear;
+    animation-timeline: scroll();
+    animation-range: 0% 50%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* CSS View Transitions (when supported) */
+@supports (view-transition-name: root) {
+  .view-transition {
+    view-transition-name: main-content;
+  }
+}
+
+/* CSS Anchor Positioning (when supported) */
+@supports (anchor-name: --anchor) {
+  .anchor-element {
+    anchor-name: --anchor;
+  }
+  
+  .anchored-element {
+    position: absolute;
+    top: anchor(--anchor bottom);
+    left: anchor(--anchor left);
+  }
+}
+
+/* CSS Toggle (when supported) */
+@supports (toggle-trigger: --toggle) {
+  .toggle-container {
+    toggle-trigger: --toggle;
+  }
+  
+  .toggle-content {
+    toggle-group: --toggle;
+  }
+  
+  .toggle-content:not(:checked) {
+    display: none;
+  }
+}
+
+/* CSS Popover (when supported) */
+@supports (popover: auto) {
+  .popover-element {
+    popover: auto;
+  }
+}
+
+/* CSS Anchor Query (when supported) */
+@supports (anchor-name: --anchor) {
+  .anchor-query {
+    anchor-name: --anchor;
+  }
+  
+  @container (anchor(--anchor) > 400px) {
+    .anchored-content {
+      flex-direction: row;
+    }
+  }
+}
+
+/* CSS Color Functions */
+.modern-colors {
+  background-color: color-mix(in srgb, var(--color-primary) 50%, white);
+  color: color-mix(in srgb, var(--color-primary) 80%, black);
+  border-color: color-mix(in srgb, var(--color-primary) 30%, transparent);
+}
+
+/* CSS Relative Colors */
+.relative-colors {
+  background-color: hsl(from var(--color-primary) h s calc(l + 10%));
+  color: hsl(from var(--color-primary) h s calc(l - 20%));
+}
+
+
+/* CSS Media Query Ranges */
+@media (width >= 768px) {
+  .range-query {
+    display: flex;
+  }
+}
+
+@media (768px <= width <= 1024px) {
+  .range-query-tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* CSS Nesting */
+.modern-nesting {
+  background-color: var(--color-background);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  
+  & .title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  & .content {
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    
+    & p {
+      margin-bottom: var(--spacing-md);
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  
+  &:hover {
+    background-color: var(--color-background-secondary);
+    transform: translateY(-2px);
+  }
+  
+  @media (min-width: 768px) {
+    padding: var(--spacing-xl);
+    
+    & .title {
+      font-size: var(--font-size-2xl);
+    }
+  }
+}

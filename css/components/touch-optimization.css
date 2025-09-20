@@ -1,0 +1,389 @@
+/* Touch Optimization Component */
+
+/* Touch-friendly button sizes */
+.btn {
+  min-height: 44px;
+  min-width: 44px;
+  padding: var(--spacing-md) var(--spacing-lg);
+  touch-action: manipulation;
+}
+
+.btn-sm {
+  min-height: 40px;
+  min-width: 40px;
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.btn-lg {
+  min-height: 48px;
+  min-width: 48px;
+  padding: var(--spacing-lg) var(--spacing-xl);
+}
+
+.btn-xl {
+  min-height: 56px;
+  min-width: 56px;
+  padding: var(--spacing-xl) var(--spacing-2xl);
+}
+
+/* Touch-friendly navigation */
+.nav-link {
+  min-height: 44px;
+  padding: var(--spacing-md) var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: manipulation;
+}
+
+.contact-btn {
+  min-height: 44px;
+  padding: var(--spacing-md) var(--spacing-lg);
+  touch-action: manipulation;
+}
+
+/* Touch-friendly interactive elements */
+.slider__btn,
+.testimonial__arrow,
+.typeform-close-btn {
+  min-width: 44px;
+  min-height: 44px;
+  touch-action: manipulation;
+}
+
+/* Touch-friendly cards */
+.service-card,
+.testimonial__card,
+.partners__item,
+.client-logo {
+  touch-action: manipulation;
+  cursor: pointer;
+}
+
+/* Touch feedback */
+.btn:active,
+.nav-link:active,
+.contact-btn:active,
+.slider__btn:active,
+.testimonial__arrow:active,
+.typeform-close-btn:active {
+  transform: scale(0.98);
+  transition: transform 0.1s ease;
+}
+
+.service-card:active,
+.testimonial__card:active,
+.partners__item:active,
+.client-logo:active {
+  transform: scale(0.98);
+  transition: transform 0.1s ease;
+}
+
+/* Touch-friendly form elements */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea,
+select {
+  min-height: 44px;
+  padding: var(--spacing-md);
+  font-size: 16px; /* Prevents zoom on iOS */
+  touch-action: manipulation;
+}
+
+/* Touch-friendly checkboxes and radio buttons */
+input[type="checkbox"],
+input[type="radio"] {
+  min-width: 44px;
+  min-height: 44px;
+  touch-action: manipulation;
+}
+
+/* Touch-friendly links */
+a {
+  touch-action: manipulation;
+}
+
+/* Touch-friendly pattern blocks */
+.hero__pattern-block {
+  min-width: 44px;
+  min-height: 44px;
+  touch-action: manipulation;
+}
+
+/* Touch-friendly dots */
+.hero__dot {
+  min-width: 8px;
+  min-height: 8px;
+  touch-action: manipulation;
+}
+
+/* Touch device specific styles */
+@media (hover: none) and (pointer: coarse) {
+  /* Remove hover effects on touch devices */
+  .btn:hover,
+  .nav-link:hover,
+  .contact-btn:hover,
+  .slider__btn:hover,
+  .testimonial__arrow:hover,
+  .typeform-close-btn:hover,
+  .service-card:hover,
+  .testimonial__card:hover,
+  .partners__item:hover,
+  .client-logo:hover,
+  .hero__pattern-block:hover {
+    transform: none;
+  }
+  
+  /* Increase touch targets */
+  .btn {
+    min-height: 48px;
+    min-width: 48px;
+  }
+  
+  .nav-link {
+    min-height: 48px;
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+  
+  .contact-btn {
+    min-height: 48px;
+    padding: var(--spacing-lg) var(--spacing-xl);
+  }
+  
+  .slider__btn,
+  .testimonial__arrow,
+  .typeform-close-btn {
+    min-width: 48px;
+    min-height: 48px;
+  }
+  
+  .hero__pattern-block {
+    min-width: 48px;
+    min-height: 48px;
+  }
+  
+  /* Larger text for better readability */
+  .nav-link {
+    font-size: var(--font-size-lg);
+  }
+  
+  .contact-btn {
+    font-size: var(--font-size-lg);
+  }
+  
+  /* Increase spacing between interactive elements */
+  .nav-list {
+    gap: var(--spacing-xl);
+  }
+  
+  .slider__navigation {
+    gap: var(--spacing-lg);
+  }
+  
+  .testimonial__arrows {
+    gap: var(--spacing-lg);
+  }
+  
+  /* Better visual feedback for touch */
+  .btn:active,
+  .nav-link:active,
+  .contact-btn:active,
+  .slider__btn:active,
+  .testimonial__arrow:active,
+  .typeform-close-btn:active {
+    background-color: var(--color-primary-hover);
+    transform: scale(0.95);
+  }
+  
+  .service-card:active,
+  .testimonial__card:active,
+  .partners__item:active,
+  .client-logo:active {
+    transform: scale(0.95);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .hero__pattern-block:active {
+    transform: scale(0.9);
+    background-color: rgba(1, 127, 228, 0.2);
+  }
+}
+
+/* Fine pointer devices (mouse, stylus) */
+@media (hover: hover) and (pointer: fine) {
+  /* Restore hover effects for fine pointer devices */
+  .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-primary);
+  }
+  
+  .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .testimonial__card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .partners__item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .client-logo:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .hero__pattern-block:hover {
+    transform: scale(0.95);
+    box-shadow: 0 0 20px rgba(1, 127, 228, 0.3);
+  }
+}
+
+/* Touch device orientation changes */
+@media (orientation: landscape) and (max-height: 500px) {
+  .btn {
+    min-height: 40px;
+  }
+  
+  .nav-link {
+    min-height: 40px;
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+  
+  .contact-btn {
+    min-height: 40px;
+    padding: var(--spacing-sm) var(--spacing-lg);
+  }
+  
+  .slider__btn,
+  .testimonial__arrow,
+  .typeform-close-btn {
+    min-width: 40px;
+    min-height: 40px;
+  }
+}
+
+/* Touch device specific spacing */
+@media (max-width: 768px) {
+  .nav-list {
+    gap: var(--spacing-xl);
+  }
+  
+  .nav-link {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+  
+  .contact-btn {
+    padding: var(--spacing-lg) var(--spacing-xl);
+  }
+  
+  .slider__navigation {
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+  }
+  
+  .testimonial__arrows {
+    gap: var(--spacing-lg);
+  }
+}
+
+/* Touch-friendly modal */
+.typeform-modal-content {
+  touch-action: manipulation;
+}
+
+.typeform-close-btn {
+  position: absolute;
+  top: var(--spacing-lg);
+  right: var(--spacing-lg);
+  min-width: 48px;
+  min-height: 48px;
+  touch-action: manipulation;
+}
+
+/* Touch-friendly scroll areas */
+.testimonials__slider {
+  touch-action: pan-x;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+.clients__slider {
+  touch-action: pan-x;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Touch-friendly form validation */
+input:invalid {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.2);
+}
+
+input:valid {
+  border-color: #16a34a;
+  box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.2);
+}
+
+/* Touch-friendly focus states */
+.btn:focus-visible,
+.nav-link:focus-visible,
+.contact-btn:focus-visible,
+.slider__btn:focus-visible,
+.testimonial__arrow:focus-visible,
+.typeform-close-btn:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Touch device accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .btn:active,
+  .nav-link:active,
+  .contact-btn:active,
+  .slider__btn:active,
+  .testimonial__arrow:active,
+  .typeform-close-btn:active,
+  .service-card:active,
+  .testimonial__card:active,
+  .partners__item:active,
+  .client-logo:active,
+  .hero__pattern-block:active {
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Touch device performance optimization */
+.btn,
+.nav-link,
+.contact-btn,
+.slider__btn,
+.testimonial__arrow,
+.typeform-close-btn,
+.service-card,
+.testimonial__card,
+.partners__item,
+.client-logo,
+.hero__pattern-block {
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Touch device specific animations */
+@media (hover: none) and (pointer: coarse) {
+  .hero__dot {
+    animation-duration: 8s;
+  }
+  
+  .hero__chip-background,
+  .hero__brain-container {
+    animation-duration: 0.8s;
+  }
+}

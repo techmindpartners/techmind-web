@@ -1,0 +1,437 @@
+/* Responsive Breakpoints - Mobile First Approach */
+
+/* Base styles (mobile first) */
+/* No media query needed for base styles */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+  
+  .hero__title {
+    font-size: var(--font-size-5xl);
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+  
+  .hero__title {
+    font-size: var(--font-size-6xl);
+  }
+  
+  .section__title {
+    font-size: var(--font-size-4xl);
+  }
+  
+  .nav-toggle {
+    display: none;
+  }
+  
+  .nav-menu {
+    position: static;
+    transform: none;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+  }
+  
+  .nav-list {
+    flex-direction: row;
+    gap: var(--spacing-lg);
+  }
+  
+  .nav-link {
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-sm) 0;
+    width: auto;
+    text-align: left;
+  }
+  
+  .nav-contact {
+    position: static;
+    transform: none;
+    margin-top: 0;
+  }
+  
+  .contact-btn {
+    width: auto;
+  }
+  
+  .metrics__header {
+    flex-direction: row;
+    text-align: left;
+  }
+  
+  .metrics__actions--mobile {
+    display: none;
+  }
+  
+  .metrics__actions--web {
+    display: flex;
+  }
+  
+  .success-stories__header {
+    flex-direction: row;
+    text-align: left;
+  }
+  
+  .success-stories__actions--mobile {
+    display: none;
+  }
+  
+  .success-stories__actions--web {
+    display: flex;
+  }
+  
+  .testimonial__content-grid {
+    grid-template-columns: 2fr 1fr;
+    text-align: left;
+  }
+  
+  .footer__bottom {
+    flex-direction: row;
+    text-align: left;
+  }
+  
+  .footer__links {
+    flex-direction: row;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+  
+  .hero__title {
+    font-size: var(--font-size-6xl);
+    letter-spacing: -1.96px;
+  }
+  
+  .section__title {
+    font-size: var(--font-size-5xl);
+  }
+  
+  .services__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .partners__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .metrics__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+  
+  .hero__chip-background,
+  .hero__brain-container {
+    right: calc((100vw - var(--container-max-width)) / 2 + 50px);
+    width: 700px;
+  }
+  
+  .services__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .partners__grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+/* Extra extra large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+  
+  .hero__chip-background,
+  .hero__brain-container {
+    right: calc((100vw - var(--container-max-width)) / 2);
+    width: 800px;
+  }
+}
+
+/* Ultra wide devices (1920px and up) */
+@media (min-width: 1920px) {
+  .container {
+    max-width: var(--container-max-width);
+  }
+  
+  .hero__pattern-grid {
+    grid-template-columns: repeat(30, 1fr);
+    grid-template-rows: repeat(15, 1fr);
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .hero__pattern-block:hover {
+    transform: none;
+    background-color: rgba(1, 127, 228, 0.1);
+  }
+  
+  .btn:hover {
+    transform: none;
+  }
+  
+  .card:hover {
+    transform: none;
+  }
+  
+  .testimonial__card:hover {
+    transform: none;
+  }
+  
+  .partners__item:hover {
+    transform: none;
+  }
+  
+  .clients__logo:hover {
+    transform: none;
+  }
+  
+  /* Larger touch targets */
+  .nav-link {
+    padding: var(--spacing-md) 0;
+  }
+  
+  .contact-btn {
+    padding: var(--spacing-lg) var(--spacing-xl);
+    min-height: 48px;
+  }
+  
+  .slider__btn,
+  .testimonial__arrow {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .typeform-close-btn {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .logo-img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+  
+  .hero__chip-image,
+  .hero__brain-image {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Landscape orientation */
+@media (orientation: landscape) and (max-height: 500px) {
+  .hero {
+    min-height: 100vh;
+    padding: var(--spacing-xl) 0;
+  }
+  
+  .hero__title {
+    font-size: var(--font-size-4xl);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .hero__subtitle {
+    font-size: var(--font-size-base);
+  }
+  
+  .header {
+    height: 60px;
+  }
+  
+  .logo-img {
+    height: 24px;
+  }
+}
+
+/* Portrait orientation */
+@media (orientation: portrait) {
+  .hero__chip-background,
+  .hero__brain-container {
+    display: none;
+  }
+}
+
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .hero__dot,
+  .hero__chip-background,
+  .hero__brain-container,
+  .become-partner__circle-decoration {
+    animation: none;
+  }
+  
+  .hero__pattern-block:hover,
+  .btn:hover,
+  .card:hover,
+  .testimonial__card:hover,
+  .partners__item:hover,
+  .clients__logo:hover {
+    transform: none;
+  }
+  
+  .nav-link::after {
+    transition: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .hero__pattern-block {
+    border-color: currentColor;
+  }
+  
+  .hero__dot {
+    background-color: currentColor;
+  }
+  
+  .nav-link::after {
+    background-color: currentColor;
+  }
+}
+
+/* Print styles */
+@media print {
+  .hero__floating-dots,
+  .hero__chip-background,
+  .hero__brain-container,
+  .hero__background-pattern,
+  .nav-toggle,
+  .contact-btn,
+  .btn--partner {
+    display: none !important;
+  }
+  
+  .hero {
+    background: white !important;
+    color: black !important;
+    min-height: auto !important;
+    padding: 1cm 0 !important;
+  }
+  
+  .header {
+    border-bottom: 1px solid black !important;
+  }
+  
+  .section {
+    page-break-inside: avoid;
+  }
+}
+
+/* Container queries (when supported) */
+@supports (container-type: inline-size) {
+  .hero__pattern-grid {
+    container-type: inline-size;
+  }
+  
+  @container (min-width: 768px) {
+    .hero__pattern-grid {
+      grid-template-columns: repeat(16, 1fr);
+      grid-template-rows: repeat(8, 1fr);
+    }
+  }
+  
+  @container (min-width: 1024px) {
+    .hero__pattern-grid {
+      grid-template-columns: repeat(20, 1fr);
+      grid-template-rows: repeat(10, 1fr);
+    }
+  }
+  
+  @container (min-width: 1440px) {
+    .hero__pattern-grid {
+      grid-template-columns: repeat(24, 1fr);
+      grid-template-rows: repeat(12, 1fr);
+    }
+  }
+  
+  @container (min-width: 1920px) {
+    .hero__pattern-grid {
+      grid-template-columns: repeat(30, 1fr);
+      grid-template-rows: repeat(15, 1fr);
+    }
+  }
+}
+
+/* Responsive typography scale */
+@media (min-width: 768px) {
+  :root {
+    --font-size-xs: 14px;
+    --font-size-sm: 16px;
+    --font-size-base: 18px;
+    --font-size-lg: 20px;
+    --font-size-xl: 24px;
+    --font-size-2xl: 28px;
+    --font-size-3xl: 36px;
+    --font-size-4xl: 48px;
+    --font-size-5xl: 64px;
+    --font-size-6xl: 80px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --font-size-xs: 12px;
+    --font-size-sm: 14px;
+    --font-size-base: 16px;
+    --font-size-lg: 18px;
+    --font-size-xl: 20px;
+    --font-size-2xl: 24px;
+    --font-size-3xl: 32px;
+    --font-size-4xl: 48px;
+    --font-size-5xl: 64px;
+    --font-size-6xl: 96px;
+  }
+}
+
+/* Responsive spacing scale */
+@media (min-width: 768px) {
+  :root {
+    --spacing-xs: 6px;
+    --spacing-sm: 12px;
+    --spacing-md: 20px;
+    --spacing-lg: 28px;
+    --spacing-xl: 36px;
+    --spacing-2xl: 56px;
+    --spacing-3xl: 72px;
+    --spacing-4xl: 96px;
+    --spacing-5xl: 144px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-2xl: 48px;
+    --spacing-3xl: 64px;
+    --spacing-4xl: 80px;
+    --spacing-5xl: 120px;
+  }
+}
