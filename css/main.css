@@ -24,6 +24,10 @@
 /* Project Specific Styles */
 /* These styles will be moved to appropriate component files */
 
+.splide__track {
+  padding: 20px 0px !important;
+}
+
 /* Hero Section */
 .hero {
   background-color: var(--color-background-hero);
@@ -31,7 +35,7 @@
   min-height: 80vh;
   display: flex;
   align-items: center;
-  padding: var(--spacing-4xl) 0;
+  padding: 0; /* Remove padding for mouse offset fix */
   position: relative;
   overflow: hidden;
 }
@@ -43,6 +47,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: var(--spacing-2xl) 0; /* Move padding here from hero */
 }
 
 .hero-content {
@@ -51,17 +56,15 @@
   width: 100%;
 }
 
-/* Neural Network Background */
-.neural-network-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  opacity: 0.4;
-  will-change: transform;
-  transform: translateZ(0); /* GPU acceleration */
+/* Particle Network Background (handled by JS) */
+#neural-particle-canvas {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 1 !important;
+  pointer-events: auto !important;
 }
 
 /* Hero Layout */
@@ -442,115 +445,48 @@ main {
   background-color: var(--color-background);
 }
 
-.partners-slider-container {
-  overflow: hidden;
-  position: relative;
+/* Splide Base Styles */
+.splide {
+  visibility: hidden;
   padding: 20px 0px;
 }
 
-.partners-grid {
-  display: flex;
-  gap: var(--spacing-xl);
-  animation: scrollPartners 40s linear infinite;
-  width: fit-content;
+.splide.is-initialized {
+  visibility: visible;
 }
 
-.partner-item {
-  flex-shrink: 0;
+/* Unified Logo Slider Styles */
+.logo-splide .splide__slide {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: var(--spacing-xl);
+}
+
+.logo-item {
+  padding: var(--spacing-lg);
   background: var(--color-background);
   border: 1px solid var(--color-border-light);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-sm);
   transition: all var(--transition-normal);
-  min-width: 150px;
-  height: 120px;
-  position: relative;
-  overflow: hidden;
-}
-
-.partner-item:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--color-primary);
-}
-
-.partner-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
-  transform: scaleX(0);
-  transition: transform var(--transition-normal);
-}
-
-.partner-item:hover::before {
-  transform: scaleX(1);
-}
-
-.partner-logo {
-  width: 150px;
-  height: auto;
-  max-height: 80px;
-  object-fit: contain;
-}
-
-@keyframes scrollPartners {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-/* Clients Section */
-.clients-section {
-  background-color: var(--color-background);
-}
-
-.clients-slider-container {
-  overflow: hidden;
-  position: relative;
-  padding: 20px 0px;
-}
-
-.clients-slider {
+  min-width: 140px;
+  height: 90px;
   display: flex;
-  gap: var(--spacing-xl);
-  animation: scrollClients 30s linear infinite;
-  width: fit-content;
-}
-
-.client-logo {
-  flex-shrink: 0;
-  display: flex;
-  justify-content: center;
   align-items: center;
-  padding: var(--spacing-lg);
-  background: var(--color-background-secondary);
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-sm);
-  transition: all var(--transition-normal);
-  min-width: 150px;
+  justify-content: center;
   position: relative;
   overflow: hidden;
+  width: 100%;
+  flex-shrink: 0;
 }
 
-.client-logo:hover {
-  transform: translateY(-8px);
+.logo-item:hover {
+  transform: translateY(-6px);
   box-shadow: var(--shadow-lg);
   border-color: var(--color-primary);
 }
 
-.client-logo::before {
+.logo-item::before {
   content: '';
   position: absolute;
   top: 0;
@@ -562,23 +498,52 @@ main {
   transition: transform var(--transition-normal);
 }
 
-.client-logo:hover::before {
+.logo-item:hover::before {
   transform: scaleX(1);
 }
 
-.client-logo img {
-  width: 150px;
+.logo-item img {
+  width: auto;
   height: auto;
+  max-width: 120px;
   max-height: 60px;
   object-fit: contain;
 }
 
-@keyframes scrollClients {
-  0% {
-    transform: translateX(0);
+/* Section Backgrounds */
+.clients-section {
+  background-color: var(--color-background);
+}
+
+/* Unified background for all logo items */
+.logo-item {
+  background: var(--color-background) !important;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .logo-item {
+    min-width: 120px;
+    height: 80px;
+    padding: var(--spacing-md);
   }
-  100% {
-    transform: translateX(-50%);
+  
+  .logo-item img {
+    max-width: 100px;
+    max-height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-item {
+    min-width: 100px;
+    height: 70px;
+    padding: var(--spacing-sm);
+  }
+  
+  .logo-item img {
+    max-width: 80px;
+    max-height: 40px;
   }
 }
 
@@ -1078,8 +1043,9 @@ main {
   }
   
   .brain-container {
-    width: 350px;
-    height: 321px;
+    width: 280px;
+    height: 257px;
+    margin: 0 auto;
   }
   
   .footer-bottom {
@@ -1095,7 +1061,10 @@ main {
 
 @media (max-width: 425px) {
   .hero-visual-section {
-    display: none;
+    display: block; /* Mobile'da da göster */
+    width: 100%;
+    margin-top: var(--spacing-xl);
+    text-align: center;
   }
   
   .hero-text-section {

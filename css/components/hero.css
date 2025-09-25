@@ -241,9 +241,18 @@
 }
 
 @media (max-width: 425px) {
-  .hero__chip-background, 
-  .hero__brain-container {
+  .hero__chip-background {
     display: none;
+  }
+  
+  .hero__brain-container {
+    position: relative;
+    right: auto;
+    top: auto;
+    width: 280px;
+    height: 257px;
+    margin: var(--spacing-lg) auto 0;
+    opacity: 1;
   }
   
   .hero__title {

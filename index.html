@@ -87,8 +87,11 @@
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
+    <!-- Splide Slider CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    
     <!-- Preload critical resources -->
-    <link rel="preload" href="assets/images/brain.webp" as="image" type="image/webp">
+    <link rel="preload" href="assets/images/brain.png" as="image" type="image/webp">
     <link rel="preload" href="assets/team/hakan_arici.webp" as="image" type="image/webp">
     <link rel="preload" href="css/main.css" as="style">
     <link rel="preload" href="js/script.js" as="script">
@@ -129,9 +132,6 @@
         <section id="home" class="hero" aria-labelledby="hero-title">
             <div class="container">
                 <div class="hero-content">
-                    <!-- Neural Network Background -->
-                    <canvas id="neural-network" class="neural-network-bg" aria-hidden="true"></canvas>
-                    
                     <!-- Hero Layout -->
                     <div class="hero-layout">
                         <!-- Left Side - Text Content -->
@@ -149,7 +149,7 @@
                         <div class="hero-visual-section">
                             <div class="brain-container" aria-hidden="true">
                                 <picture>
-                                    <source srcset="assets/images/brain.webp" type="image/webp">
+                                    <source srcset="assets/images/brain.png" type="image/png">
                                     <img src="assets/images/brain.png" alt="Brain illustration representing intelligence and innovation" class="brain-image" width="600" height="551">
                                 </picture>
                             </div>
@@ -268,63 +268,55 @@
                     <h2 id="clients-title">Our Clients</h2>
                     <p class="section-description">Trusted by Leading Organizations</p>
                 </div>
-                <div class="clients-slider-container">
-                    <div class="clients-slider">
-                        <div class="client-logo">
-                            <img src="assets/logos/binbin-logo.png" alt="BinBin">
-                        </div>
-                        <div class="client-logo">
-                            <img src="assets/logos/epias-logo.png" alt="EPİAS">
-                        </div>
-                        <div class="client-logo">
-                            <img src="assets/logos/etiya-logo.png" alt="ETİYA">
-                        </div>
-                        <div class="client-logo">
-                            <img src="assets/logos/romm-logo.png" alt="RÖMM">
-                        </div>
-                        <div class="client-logo">
-                            <img src="assets/logos/paywall-logo.png" alt="PayWall">
-                        </div>
-                        <div class="client-logo">
-                            <img src="assets/logos/realtorglobal-logo.png" alt="Realtor Global">
-                        </div>
-                        <div class="client-logo">
-                            <img src="assets/logos/ikregrup-logo.png" alt="İkregrup">
-                        </div>
-                        <div class="client-logo">
-                            <img src="assets/logos/taom-logo.png" alt="TAOM">
-                        </div>
-                        <div class="client-logo">
-                            <img src="assets/logos/smartsis-logo.png" alt="Smartsis">
-                        </div>
-                        <!-- Duplicate for infinite scroll -->
-                        <div class="client-logo">
-                            <img src="assets/logos/binbin-logo.png" alt="BinBin">
-                        </div>
-                        <div class="client-logo">
-                            <img src="assets/logos/epias-logo.png" alt="EPİAS">
-                        </div>
-                        <div class="client-logo">
-                            <img src="assets/logos/etiya-logo.png" alt="ETİYA">
-                        </div>
-                        <div class="client-logo">
-                            <img src="assets/logos/romm-logo.png" alt="RÖMM">
-                        </div>
-                        <div class="client-logo">
-                            <img src="assets/logos/paywall-logo.png" alt="PayWall">
-                        </div>
-                        <div class="client-logo">
-                            <img src="assets/logos/realtorglobal-logo.png" alt="Realtor Global">
-                        </div>
-                        <div class="client-logo">
-                            <img src="assets/logos/ikregrup-logo.png" alt="İkregrup">
-                        </div>
-                        <div class="client-logo">
-                            <img src="assets/logos/taom-logo.png" alt="TAOM">
-                        </div>
-                        <div class="client-logo">
-                            <img src="assets/logos/smartsis-logo.png" alt="Smartsis">
-                        </div>
+                <div class="splide logo-splide" id="clients-slider">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            <li class="splide__slide">
+                                <div class="logo-item">
+                                    <img src="assets/logos/binbin-logo.png" alt="BinBin">
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="logo-item">
+                                    <img src="assets/logos/epias-logo.png" alt="EPİAS">
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="logo-item">
+                                    <img src="assets/logos/etiya-logo.png" alt="ETİYA">
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="logo-item">
+                                    <img src="assets/logos/romm-logo.png" alt="RÖMM">
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="logo-item">
+                                    <img src="assets/logos/paywall-logo.png" alt="PayWall">
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="logo-item">
+                                    <img src="assets/logos/realtorglobal-logo.png" alt="Realtor Global">
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="logo-item">
+                                    <img src="assets/logos/ikregrup-logo.png" alt="İkregrup">
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="logo-item">
+                                    <img src="assets/logos/taom-logo.png" alt="TAOM">
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div class="logo-item">
+                                    <img src="assets/logos/smartsis-logo.png" alt="Smartsis">
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -573,45 +565,40 @@
                     <h2 id="partners-title" class="section-title">Our Partners</h2>
                     <p class="section-description">Collaborating with Industry Leaders</p>
                 </div>
-                <div class="partners-slider-container">
-                    <div class="partners-grid" role="list" aria-label="Partner companies">
-                        <div class="partner-item" role="listitem">
-                            <img src="assets/partners/dp-300x229.png" alt="DP - Technology partner" class="partner-logo" width="300" height="229">
-                        </div>
-                        <div class="partner-item" role="listitem">
-                            <img src="assets/partners/shr-300x150.jpg" alt="SHR - Business partner" class="partner-logo" width="300" height="150">
-                        </div>
-                        <div class="partner-item" role="listitem">
-                            <img src="assets/partners/huaweicloud-150x150.png" alt="Huawei Cloud - Cloud solutions partner" class="partner-logo" width="150" height="150">
-                        </div>
-                        <div class="partner-item" role="listitem">
-                            <img src="assets/partners/valven-e1742346412599-300x86.jpg" alt="Valven - Technology partner" class="partner-logo" width="300" height="86">
-                        </div>
-                        <div class="partner-item" role="listitem">
-                            <img src="assets/partners/talentops-300x71.png" alt="TalentOps - Talent solutions partner" class="partner-logo" width="300" height="71">
-                        </div>
-                        <div class="partner-item" role="listitem">
-                            <img src="assets/partners/Virgosol-300x65.png" alt="Virgosol - Innovation partner" class="partner-logo" width="300" height="65">
-                        </div>
-                        <!-- Duplicate for infinite scroll -->
-                        <div class="partner-item" role="listitem">
-                            <img src="assets/partners/dp-300x229.png" alt="DP - Technology partner" class="partner-logo" width="300" height="229">
-                        </div>
-                        <div class="partner-item" role="listitem">
-                            <img src="assets/partners/shr-300x150.jpg" alt="SHR - Business partner" class="partner-logo" width="300" height="150">
-                        </div>
-                        <div class="partner-item" role="listitem">
-                            <img src="assets/partners/huaweicloud-150x150.png" alt="Huawei Cloud - Cloud solutions partner" class="partner-logo" width="150" height="150">
-                        </div>
-                        <div class="partner-item" role="listitem">
-                            <img src="assets/partners/valven-e1742346412599-300x86.jpg" alt="Valven - Technology partner" class="partner-logo" width="300" height="86">
-                        </div>
-                        <div class="partner-item" role="listitem">
-                            <img src="assets/partners/talentops-300x71.png" alt="TalentOps - Talent solutions partner" class="partner-logo" width="300" height="71">
-                        </div>
-                        <div class="partner-item" role="listitem">
-                            <img src="assets/partners/Virgosol-300x65.png" alt="Virgosol - Innovation partner" class="partner-logo" width="300" height="65">
-                        </div>
+                <div class="splide logo-splide" id="partners-slider">
+                    <div class="splide__track">
+                        <ul class="splide__list" role="list" aria-label="Partner companies">
+                            <li class="splide__slide" role="listitem">
+                                <div class="logo-item">
+                                    <img src="assets/partners/dp-300x229.png" alt="DP - Technology partner">
+                                </div>
+                            </li>
+                            <li class="splide__slide" role="listitem">
+                                <div class="logo-item">
+                                    <img src="assets/partners/shr-300x150.jpg" alt="SHR - Business partner">
+                                </div>
+                            </li>
+                            <li class="splide__slide" role="listitem">
+                                <div class="logo-item">
+                                    <img src="assets/partners/huaweicloud-150x150.png" alt="Huawei Cloud - Cloud solutions partner">
+                                </div>
+                            </li>
+                            <li class="splide__slide" role="listitem">
+                                <div class="logo-item">
+                                    <img src="assets/partners/valven-e1742346412599-300x86.jpg" alt="Valven - Technology partner">
+                                </div>
+                            </li>
+                            <li class="splide__slide" role="listitem">
+                                <div class="logo-item">
+                                    <img src="assets/partners/talentops-300x71.png" alt="TalentOps - Talent solutions partner">
+                                </div>
+                            </li>
+                            <li class="splide__slide" role="listitem">
+                                <div class="logo-item">
+                                    <img src="assets/partners/Virgosol-300x65.png" alt="Virgosol - Innovation partner">
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -698,7 +685,11 @@
     <!-- No complex scripts needed! Directory-based routing works naturally -->
 
     <!-- JavaScript -->
-    <script src="js/neural-network.js"></script>
+    <!-- Splide Slider JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    
+    <!-- Particle Network System -->
+    <script src="js/particle-network.js"></script>
     <script src="js/script.js"></script>
     <script src="performance-optimize.js"></script>
     <script src="js/footer-pattern.js"></script>

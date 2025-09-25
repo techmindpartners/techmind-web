@@ -720,3 +720,56 @@ function closeTypeformModal() {
 
 // Brain mouse interaction removed - no more brain movement animation
 
+// Splide Slider Initialization
+document.addEventListener('DOMContentLoaded', function() {
+    // Partners Slider
+    if (document.getElementById('partners-slider')) {
+        new Splide('#partners-slider', {
+            type: 'loop',
+            autoplay: true,
+            pauseOnHover: true,
+            pauseOnFocus: true,
+            interval: 3000,
+            speed: 1000,
+            perPage: 5,
+            perMove: 1,
+            gap: '1.5rem',
+            arrows: false,
+            pagination: false,
+            drag: true,
+            wheel: true,
+            wheelSleep: 100,
+            breakpoints: {
+                1200: { perPage: 4 },
+                768: { perPage: 3 },
+                480: { perPage: 2 }
+            }
+        }).mount();
+    }
+
+    // Clients Slider  
+    if (document.getElementById('clients-slider')) {
+        new Splide('#clients-slider', {
+            type: 'loop',
+            autoplay: true,
+            pauseOnHover: true,
+            pauseOnFocus: true,
+            interval: 2500,
+            speed: 800,
+            perPage: 6,
+            perMove: 1,
+            gap: '1.5rem',
+            arrows: false,
+            pagination: false,
+            drag: true,
+            wheel: true,
+            wheelSleep: 100,
+            breakpoints: {
+                1200: { perPage: 5 },
+                768: { perPage: 4 },
+                480: { perPage: 3 }
+            }
+        }).mount();
+    }
+});
+
