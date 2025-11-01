@@ -368,10 +368,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     
     if (testimonialTitle && testimonialName && testimonialRole && testimonialImg && prevBtn && nextBtn && sliderContainer) {
-        let isDragging = false;
-        let startX = 0;
-        let currentX = 0;
-        let startTime = 0;
         let isTransitioning = false; // Prevent rapid clicks
         
         function updateTestimonial() {
@@ -459,59 +455,8 @@ document.addEventListener('DOMContentLoaded', function() {
             resetAutoAdvance();
         });
         
-        // Touch/Mouse drag events
-        function handleStart(e) {
-            if (isTransitioning) return; // Don't start drag during transition
-            
-            isDragging = true;
-            startX = e.type === 'mousedown' ? e.clientX : e.touches[0].clientX;
-            currentX = startX; // Initialize currentX
-            startTime = Date.now();
-            stopAutoAdvance();
-            sliderContainer.style.cursor = 'grabbing';
-            sliderContainer.style.userSelect = 'none';
-        }
-        
-        function handleMove(e) {
-            if (!isDragging) return;
-            
-            e.preventDefault();
-            currentX = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
-        }
-        
-        function handleEnd(e) {
-            if (!isDragging) return;
-            
-            isDragging = false;
-            sliderContainer.style.cursor = 'grab';
-            sliderContainer.style.userSelect = '';
-            
-            const deltaX = currentX - startX;
-            const deltaTime = Date.now() - startTime;
-            const velocity = deltaTime > 0 ? Math.abs(deltaX) / deltaTime : 0;
-            
-            // Minimum swipe distance or velocity to trigger slide
-            if (Math.abs(deltaX) > 50 || velocity > 0.5) {
-                if (deltaX > 0) {
-                    prevTestimonial();
-                } else {
-                    nextTestimonial();
-                }
-            }
-            
-            // Always reset auto-advance after interaction
-            resetAutoAdvance();
-        }
-        
-        // Mouse events
-        sliderContainer.addEventListener('mousedown', handleStart);
-        document.addEventListener('mousemove', handleMove);
-        document.addEventListener('mouseup', handleEnd);
-        
-        // Touch events
-        sliderContainer.addEventListener('touchstart', handleStart, { passive: false });
-        sliderContainer.addEventListener('touchmove', handleMove, { passive: false });
-        sliderContainer.addEventListener('touchend', handleEnd);
+        // Swipe/drag events removed - only button navigation now
+        // This prevents scroll blocking issues
         
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
