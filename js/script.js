@@ -347,12 +347,12 @@ document.addEventListener('DOMContentLoaded', function() {
             role: "Executive Partner, AI Solutions",
             image: "assets/team/gokhan_demir.webp"
         },
-        {
-            title: "Meet Buğra, our Executive Partner responsible for the End User Solutions Program. With deep expertise in mobile development, Buğra leads our engineering efforts to build high-performance, user-friendly mobile applications. His passion for innovation and seamless user experiences ensures that our mobile solutions stay ahead of the curve. When he's not optimizing app performance, you'll find him exploring the latest tech trends or enjoying outdoor adventures, bringing both precision and creativity to our team.",
-            name: "Buğra Güney",
-            role: "Executive Partner, End User Solutions",
-            image: "assets/team/bugra_guney.webp"
-        }
+        // {
+        //     title: "Meet Buğra, our Executive Partner responsible for the End User Solutions Program. With deep expertise in mobile development, Buğra leads our engineering efforts to build high-performance, user-friendly mobile applications. His passion for innovation and seamless user experiences ensures that our mobile solutions stay ahead of the curve. When he's not optimizing app performance, you'll find him exploring the latest tech trends or enjoying outdoor adventures, bringing both precision and creativity to our team.",
+        //     name: "Buğra Güney",
+        //     role: "Executive Partner, End User Solutions",
+        //     image: "assets/team/bugra_guney.webp"
+        // }
     ];
     
     let currentTestimonial = 0;
