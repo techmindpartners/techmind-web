@@ -372,8 +372,12 @@ document.addEventListener('DOMContentLoaded', function() {
         let startX = 0;
         let currentX = 0;
         let startTime = 0;
+        let isTransitioning = false; // Prevent rapid clicks
         
         function updateTestimonial() {
+            if (isTransitioning) return; // Prevent overlapping transitions
+            
+            isTransitioning = true;
             const data = testimonialData[currentTestimonial];
             
             // Add fade out effect
@@ -407,6 +411,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Fade back in
                 sliderContainer.style.opacity = '1';
+                
+                // Allow next transition after animation completes
+                setTimeout(() => {
+                    isTransitioning = false;
+                }, 100);
             }, 200);
         }
         
@@ -452,8 +461,11 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Touch/Mouse drag events
         function handleStart(e) {
+            if (isTransitioning) return; // Don't start drag during transition
+            
             isDragging = true;
             startX = e.type === 'mousedown' ? e.clientX : e.touches[0].clientX;
+            currentX = startX; // Initialize currentX
             startTime = Date.now();
             stopAutoAdvance();
             sliderContainer.style.cursor = 'grabbing';
@@ -476,21 +488,19 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const deltaX = currentX - startX;
             const deltaTime = Date.now() - startTime;
-            const velocity = Math.abs(deltaX) / deltaTime;
+            const velocity = deltaTime > 0 ? Math.abs(deltaX) / deltaTime : 0;
             
             // Minimum swipe distance or velocity to trigger slide
             if (Math.abs(deltaX) > 50 || velocity > 0.5) {
-                stopAutoAdvance(); // Stop current timer before changing
                 if (deltaX > 0) {
                     prevTestimonial();
                 } else {
                     nextTestimonial();
                 }
-                resetAutoAdvance();
-            } else {
-                // If no slide occurred, just restart auto-advance
-                resetAutoAdvance();
             }
+            
+            // Always reset auto-advance after interaction
+            resetAutoAdvance();
         }
         
         // Mouse events
