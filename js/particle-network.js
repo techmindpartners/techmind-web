@@ -41,6 +41,12 @@ class TechMindNeuralNetwork {
       heroSection.insertBefore(particleDiv, heroSection.firstChild);
     }
 
+    if (!heroSection.querySelector('.neural-fade-overlay')) {
+      const fadeOverlay = document.createElement('div');
+      fadeOverlay.className = 'neural-fade-overlay';
+      heroSection.appendChild(fadeOverlay);
+    }
+
     // Configure options based on screen size
     const isMobile = window.innerWidth <= 768;
     const isTablet = window.innerWidth <= 1024;
