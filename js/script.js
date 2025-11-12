@@ -541,6 +541,98 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Hero Brain Parallax Effect
+document.addEventListener('DOMContentLoaded', function() {
+    const brainImage = document.querySelector('.brain-image');
+    const heroSection = document.getElementById('home');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    
+    if (!brainImage || !heroSection || prefersReducedMotion.matches) {
+        return;
+    }
+    
+    const desktopQuery = window.matchMedia('(min-width: 768px)');
+    
+    if (!brainImage || !heroSection || prefersReducedMotion.matches) {
+        return;
+    }
+    
+    let heroTop = 0;
+    let heroHeight = 0;
+    let animationFrameId = null;
+    let parallaxActive = false;
+    const PARALLAX_SPEED = 0.35;
+    
+    const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+    
+    const updateMetrics = () => {
+        heroTop = heroSection.offsetTop;
+        heroHeight = heroSection.offsetHeight;
+    };
+    
+    const applyParallax = () => {
+        const scrollY = window.scrollY || window.pageYOffset;
+        const distance = clamp(scrollY - heroTop, 0, heroHeight);
+        const translate = distance * (PARALLAX_SPEED - 1);
+        brainImage.style.transform = `translate3d(0, ${translate}px, 0)`;
+        animationFrameId = null;
+    };
+    
+    const onScroll = () => {
+        if (!parallaxActive || animationFrameId) {
+            return;
+        }
+        animationFrameId = window.requestAnimationFrame(applyParallax);
+    };
+    
+    const onResize = () => {
+        if (!parallaxActive) {
+            return;
+        }
+        updateMetrics();
+        applyParallax();
+    };
+    
+    const enableParallax = () => {
+        if (parallaxActive) {
+            return;
+        }
+        parallaxActive = true;
+        updateMetrics();
+        applyParallax();
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onResize);
+    };
+    
+    const disableParallax = () => {
+        if (!parallaxActive) {
+            return;
+        }
+        parallaxActive = false;
+        window.removeEventListener('scroll', onScroll);
+        window.removeEventListener('resize', onResize);
+        brainImage.style.transform = 'translate3d(0, 0, 0)';
+    };
+    
+    const handleViewportChange = (event) => {
+        if (event.matches) {
+            enableParallax();
+        } else {
+            disableParallax();
+        }
+    };
+    
+    if (typeof desktopQuery.addEventListener === 'function') {
+        desktopQuery.addEventListener('change', handleViewportChange);
+    } else if (typeof desktopQuery.addListener === 'function') {
+        desktopQuery.addListener(handleViewportChange);
+    }
+    
+    if (desktopQuery.matches) {
+        enableParallax();
+    }
+});
+
 // Success Stories Testimonials Slider
 document.addEventListener('DOMContentLoaded', function() {
     const slider = document.querySelector('.testimonials-slider');

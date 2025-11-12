@@ -285,6 +285,8 @@
   object-fit: contain;
   position: relative;
   z-index: 2;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
 }
 
 @keyframes fadeInUp {
