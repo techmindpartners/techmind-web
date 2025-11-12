@@ -278,7 +278,7 @@ main {
 
 /* Old hero title styles disabled
 .hero-title {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 96px;
   font-weight: 500;
   margin-bottom: 30px;
@@ -417,7 +417,7 @@ main {
 }
 
 .section-header h2 {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 36px;
   font-weight: 700;
   margin-bottom: 1rem;
@@ -1270,7 +1270,7 @@ main {
 }
 
 .success-stories-content h2 {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 48px;
   font-weight: 700;
   line-height: 56px;
@@ -2184,7 +2184,7 @@ main {
 }
 
 .metrics-content h2 {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 48px;
   font-weight: 700;
   line-height: 56px;
@@ -3078,7 +3078,7 @@ main {
 }
 
 .become-partner-title {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 40px;
   font-weight: 700;
   line-height: 44px;
@@ -3286,7 +3286,7 @@ main {
 .service-detail-header-title-container .subtitle {
   color: #181d27;
   text-align: center;
-  font-family: "Space Grotesk";
+  font-family: "Inter";
   font-size: 48px;
   font-style: normal;
   font-weight: 700;
@@ -3344,7 +3344,7 @@ main {
 .story-header-title-container .subtitle {
   color: #181d27;
   text-align: center;
-  font-family: "Space Grotesk";
+  font-family: "Inter";
   font-size: 48px;
   font-style: normal;
   font-weight: 700;
@@ -3409,7 +3409,7 @@ main {
 .principles-header-title-container .subtitle {
   color: #181d27;
   text-align: center;
-  font-family: "Space Grotesk";
+  font-family: "Inter";
   font-size: 48px;
   font-style: normal;
   font-weight: 700;
@@ -3575,7 +3575,7 @@ main {
 .faq-header-title-container .subtitle {
   color: #181d27;
   text-align: center;
-  font-family: "Space Grotesk";
+  font-family: "Inter";
   font-size: 48px;
   font-style: normal;
   font-weight: 700;
@@ -4374,7 +4374,7 @@ main {
 
 .contact-title {
     color: #181D27;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 36px;
     font-weight: 700;
     line-height: 44px;
@@ -4554,7 +4554,7 @@ main {
 
 .contact-info-title {
     color: #181D27;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 48px;
     font-weight: 700;
     line-height: 60px;
@@ -4830,7 +4830,7 @@ main {
 }
 
 .hero-title {
-    font-family: "Space Grotesk", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 64px;
     font-weight: 500;
     line-height: 1.2;

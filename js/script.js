@@ -325,33 +325,33 @@ document.addEventListener('DOMContentLoaded', function() {
     const testimonialData = [
         {
             title: "Meet Hakan, our Managing Partner & CEO. Leading the strategic vision and operations at Techmind Partners, Hakan is dedicated to delivering cutting-edge technology solutions that solve complex business challenges and drive sustainable growth. Under his leadership, we focus on optimizing technology costs to help organizations build efficient, future-ready infrastructures—an approach we call Cost-smart™ Technology. His visionary approach and commitment to excellence continue to drive our company forward.",
-            name: "HAKAN ARICI",
+            name: "Hakan Arıcı",
             role: "Managing Partner & CEO",
-            image: "assets/team/hakan_arici.webp"
+            image: "assets/team/hakan-arici.jpg"
         },
         {
             title: "Meet Cihan, our Executive Partner responsible for the Cloud Solutions Program. With deep expertise in cloud technologies, Cihan leads our cloud initiatives, ensuring scalable, secure, and high-performance solutions. His strategic approach to cloud architecture and infrastructure optimization helps businesses harness the full potential of the cloud. When he's not designing cutting-edge cloud solutions, Cihan enjoys diving into emerging tech trends and finding new ways to drive digital transformation.",
             name: "Cihan Tunalı",
             role: "Executive Partner, Cloud Solutions",
-            image: "assets/team/cihan_tunali.webp"
+            image: "assets/team/cihan-tunali.jpg"
         },
         {
             title: "Meet Ali, our Executive Partner responsible for Quality, Program & Project Management. With a wealth of experience in overseeing quality assurance, program execution, and project management, Ali ensures that every initiative runs smoothly and meets the highest standards. His strategic mindset and attention to detail keep our operations efficient and on track. When he's not optimizing workflows, Ali enjoys exploring new technologies and unwinding in nature, bringing a structured yet adventurous spirit to our team.",
             name: "Ali Oğuz",
             role: "Executive Partner, PMO",
-            image: "assets/team/ali_oguz.webp"
+            image: "assets/team/ali-oguz.jpg"
         },
         {
             title: "Meet Gökhan, our Executive Partner responsible for the AI Solutions Program. A distinguished software architect, Gökhan leads our research and development efforts with a sharp focus on innovation and technical excellence. His deep expertise in system design, scalable architecture, and emerging technologies fuels the creation of cutting-edge solutions that drive real business impact. With a strategic mindset and a passion for experimentation, Gökhan continuously pushes the boundaries of what's possible.",
             name: "Gökhan Demir",
             role: "Executive Partner, AI Solutions",
-            image: "assets/team/gokhan_demir.webp"
+            image: "assets/team/gokhan-demir.jpg"
         },
         // {
         //     title: "Meet Buğra, our Executive Partner responsible for the End User Solutions Program. With deep expertise in mobile development, Buğra leads our engineering efforts to build high-performance, user-friendly mobile applications. His passion for innovation and seamless user experiences ensures that our mobile solutions stay ahead of the curve. When he's not optimizing app performance, you'll find him exploring the latest tech trends or enjoying outdoor adventures, bringing both precision and creativity to our team.",
         //     name: "Buğra Güney",
         //     role: "Executive Partner, End User Solutions",
-        //     image: "assets/team/bugra_guney.webp"
+        //     image: "assets/team/bugra-guney.jpg"
         // }
     ];
     

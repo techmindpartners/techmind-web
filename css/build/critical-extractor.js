@@ -97,7 +97,7 @@ function extractCriticalCSS() {
   --color-background: #ffffff;
   --color-background-hero: #fafafa;
   --font-family-primary: "Inter", sans-serif;
-  --font-family-secondary: "Space Grotesk", sans-serif;
+  --font-family-secondary: "Inter", sans-serif;
   --font-size-6xl: 64px;
   --font-size-lg: 18px;
   --spacing-lg: 24px;

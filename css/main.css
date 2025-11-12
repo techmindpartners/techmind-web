@@ -30,7 +30,7 @@
 
 /* Hero Section */
 .hero {
-  background-color: var(--color-background-hero);
+  /* background-color: var(--color-background-hero); */
   color: var(--color-text-primary);
   min-height: 80vh;
   display: flex;
@@ -90,7 +90,7 @@
 
 .hero-title {
   font-family: var(--font-family-secondary);
-  font-size: var(--font-size-4xl);
+  font-size: calc(var(--font-size-4xl) * 1.15);
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-tight);
   color: var(--color-text-primary);
@@ -99,10 +99,10 @@
 }
 
 .hero-subtitle {
-  font-size: var(--font-size-lg);
+  font-size: calc(var(--font-size-lg) * 1.15);
   color: var(--color-text-secondary);
   line-height: var(--line-height-relaxed);
-  max-width: 800px;
+  max-width: 960px;
   margin: 0 auto;
 }
 
@@ -263,10 +263,28 @@
   animation: fadeInUp 0.5s ease-out 0.4s forwards;
 }
 
+.brain-container::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 110%;
+  height: 110%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.22) 45%, rgba(0, 0, 0, 0) 80%);
+  filter: blur(36px);
+  opacity: 0.7;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  z-index: 1;
+}
+
 .chip-image, .brain-image {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  position: relative;
+  z-index: 2;
 }
 
 @keyframes fadeInUp {
@@ -798,10 +816,11 @@ main {
 }
 
 .testimonial-title {
-  font-size: var(--font-size-2xl);
-  font-weight: var(--font-weight-medium);
+  font-size: 20px;
+  font-weight: 300;
   line-height: var(--line-height-relaxed);
-  color: var(--color-text-primary);
+  color: #000000;
+  text-align: justify;
   margin-bottom: var(--spacing-xl);
 }
 
@@ -967,7 +986,7 @@ main {
 
 @media (max-width: 768px) {
   .hero-title {
-    font-size: var(--font-size-4xl);
+    font-size: calc(var(--font-size-4xl) * 1.15);
     letter-spacing: -0.5px;
   }
   
@@ -1010,7 +1029,24 @@ main {
   .testimonial-content {
     grid-template-columns: 1fr;
     gap: var(--spacing-xl);
-    text-align: center;
+  }
+  
+  .testimonial-image {
+    order: -1;
+    justify-content: center;
+    margin-bottom: var(--spacing-xl);
+  }
+  
+  .testimonial-text {
+    text-align: left;
+    padding: 0 20px;
+  }
+  
+  .testimonial-title,
+  .testimonial-text p,
+  .testimonial-name,
+  .testimonial-role {
+    text-align: left;
   }
   
   .testimonial-img {
@@ -1072,7 +1108,7 @@ main {
   }
   
   .hero-title {
-    font-size: var(--font-size-3xl);
+    font-size: calc(var(--font-size-3xl) * 1.15);
   }
   
   .section-title {

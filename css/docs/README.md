@@ -95,7 +95,7 @@ css/
 :root {
   /* Font Families */
   --font-family-primary: "Inter", sans-serif;
-  --font-family-secondary: "Space Grotesk", sans-serif;
+  --font-family-secondary: "Inter", sans-serif;
   
   /* Font Sizes */
   --font-size-xs: 12px;

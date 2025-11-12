@@ -48,13 +48,13 @@ class TechMindNeuralNetwork {
     let density, speed;
 
     if (isMobile) {
-      density = 15000; // Fewer particles
+      density = 21000; // Fewer particles
       speed = 'slow';
     } else if (isTablet) {
-      density = 10000; // Medium particles
+      density = 12000; // Medium particles
       speed = 'slow';
     } else {
-      density = 3000; // Many particles (dense)
+      density = 3500; // Many particles (dense)
       speed = 'slow';
     }
 

@@ -49,7 +49,7 @@ function throttle(func, limit) {
 function preloadCriticalResources() {
     const criticalImages = [
         'assets/images/brain.webp',
-        'assets/team/hakan_arici.webp'
+        'assets/team/hakan-arici.jpg'
     ];
     
     criticalImages.forEach(src => {
