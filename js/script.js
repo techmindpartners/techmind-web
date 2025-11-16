@@ -491,15 +491,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     const target = entry.target;
                     const finalValue = target.textContent;
                     
-                    // Extract number and symbol
+                    // Extract number, symbol, unit and plus
                     const match = finalValue.match(/([0-9,]+)\+?/);
                     if (match) {
                         const number = parseInt(match[1].replace(/,/g, ''));
                         const symbol = finalValue.includes('$') ? '$' : '';
+                        const unitMatch = finalValue.match(/([KMB])/i);
+                        const unit = unitMatch ? unitMatch[1].toUpperCase() : '';
                         const suffix = finalValue.includes('+') ? '+' : '';
                         
                         // Animate counter
-                        animateCounter(target, 0, number, symbol, suffix, 2000);
+                        animateCounter(target, 0, number, symbol, unit, suffix, 2000);
                         
                         // Stop observing this element
                         observer.unobserve(target);
@@ -514,7 +516,7 @@ document.addEventListener('DOMContentLoaded', function() {
             observer.observe(number);
         });
         
-        function animateCounter(element, start, end, symbol, suffix, duration) {
+        function animateCounter(element, start, end, symbol, unit, suffix, duration) {
             const startTime = performance.now();
             const startValue = start;
             const endValue = end;
@@ -529,7 +531,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Format number with commas
                 const formattedValue = currentValue.toLocaleString();
-                element.textContent = symbol + formattedValue + suffix;
+                element.textContent = symbol + formattedValue + unit + suffix;
                 
                 if (progress < 1) {
                     requestAnimationFrame(updateCounter);

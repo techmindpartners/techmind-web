@@ -41,10 +41,10 @@ class TechMindNeuralNetwork {
       heroSection.insertBefore(particleDiv, heroSection.firstChild);
     }
 
-    if (!heroSection.querySelector('.neural-fade-overlay')) {
-      const fadeOverlay = document.createElement('div');
-      fadeOverlay.className = 'neural-fade-overlay';
-      heroSection.appendChild(fadeOverlay);
+    // Clean up any previously added overlay at the hero root level (legacy)
+    const existingAtRoot = heroSection.querySelector(':scope > .neural-fade-overlay');
+    if (existingAtRoot) {
+      existingAtRoot.remove();
     }
 
     // Configure options based on screen size
@@ -54,7 +54,7 @@ class TechMindNeuralNetwork {
     let density, speed;
 
     if (isMobile) {
-      density = 21000; // Fewer particles
+      density = 15000; // Increase mobile particles (lower density value)
       speed = 'slow';
     } else if (isTablet) {
       density = 12000; // Medium particles
@@ -74,6 +74,14 @@ class TechMindNeuralNetwork {
 
     // Initialize ParticleNetwork
     this.particleCanvas = new ParticleNetwork(particleDiv, options);
+    
+    // Add fade overlay above the canvas (inside particle container) so only particles fade
+    let fadeOverlay = particleDiv.querySelector('.neural-fade-overlay');
+    if (!fadeOverlay) {
+      fadeOverlay = document.createElement('div');
+      fadeOverlay.className = 'neural-fade-overlay';
+      particleDiv.appendChild(fadeOverlay);
+    }
     
     // Fix mouse offset issue with custom mouse tracking
     this.fixMouseTracking(particleDiv);
