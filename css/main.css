@@ -15,6 +15,7 @@
 @import url('./components/cards.css');
 @import url('./components/header.css');
 @import url('./components/footer.css');
+@import url('./components/sections.css');
 @import url('./components/responsive-images.css');
 @import url('./components/touch-optimization.css');
 
@@ -118,7 +119,6 @@
 
 .hero-subtitle {
   font-size: calc(var(--font-size-lg) * 1.15);
-  color: var(--color-text-secondary);
   line-height: var(--line-height-relaxed);
   max-width: 960px;
   margin: 0 auto;
@@ -281,6 +281,7 @@
   animation: fadeInUp 0.5s ease-out 0.4s forwards;
 }
 
+/* Shadow removed
 .brain-container::before {
   content: "";
   position: absolute;
@@ -296,6 +297,7 @@
   mix-blend-mode: multiply;
   z-index: 1;
 }
+*/
 
 .chip-image, .brain-image {
   width: 100%;
@@ -480,7 +482,7 @@ main {
 
 /* Partners Section */
 .partners {
-  background-color: var(--color-background);
+  background-color: var(--color-background-secondary);
 }
 
 /* Splide Base Styles */

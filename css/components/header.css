@@ -32,14 +32,16 @@
 }
 
 .logo-img {
-  height: 32px;
+  height: 24px;
   width: auto;
   transition: transform var(--transition-normal);
 }
 
+/* Hover effect removed
 .logo-img:hover {
   transform: scale(1.05);
 }
+*/
 
 /* Navigation Menu */
 .nav-menu {

@@ -1,7 +1,7 @@
 /* Footer Component - Sadece bu dosyada footer stilleri olmalı */
 .footer {
   padding: var(--spacing-xl) 0 var(--spacing-xl);
-  background-color: var(--color-background-secondary);
+  /* background-color removed */
 }
 
 .footer-inner {

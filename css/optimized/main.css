@@ -67,7 +67,6 @@
 
 .hero-subtitle {
   font-size: var(--font-size-lg);
-  color: var(--color-text-secondary);
   line-height: var(--line-height-relaxed);
   max-width: 800px;
   margin: 0 auto;

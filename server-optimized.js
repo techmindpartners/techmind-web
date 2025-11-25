@@ -81,37 +81,37 @@ app.use(express.static(__dirname, staticOptions));
 const routes = {
   '/': {
     file: 'index.html',
-    title: 'Techmind - Technology & Innovation',
+    title: 'Techmind Partners - Cost-smart Technology',
     description: 'Techmind - Leading platform in the technology world',
     priority: 1
   },
   '/engineering-solutions': {
     file: 'pages/engineering-solutions/index.html',
-    title: 'Engineering Solutions - Techmind',
+    title: 'Techmind Partners - Engineering Solutions Program',
     description: 'Professional engineering solutions for your business',
     priority: 0.8
   },
   '/cloud-solutions': {
     file: 'pages/cloud-solutions/index.html',
-    title: 'Cloud Solutions - Techmind',
+    title: 'Techmind Partners - Cloud Solutions Program',
     description: 'Scalable cloud solutions for modern businesses',
     priority: 0.8
   },
   '/ai-solutions': {
     file: 'pages/ai-solutions/index.html',
-    title: 'AI Solutions - Techmind',
+    title: 'Techmind Partners - AI Solutions Program',
     description: 'Artificial intelligence solutions for automation',
     priority: 0.8
   },
   '/end-user-solutions': {
     file: 'pages/end-user-solutions/index.html',
-    title: 'End User Solutions - Techmind',
+    title: 'Techmind Partners - End User Solutions Program',
     description: 'User-focused technology solutions',
     priority: 0.8
   },
   '/contact': {
     file: 'pages/contact/index.html',
-    title: 'Contact - Techmind',
+    title: 'Techmind Partners - Contact Us',
     description: 'Get in touch with our team',
     priority: 0.6
   }
