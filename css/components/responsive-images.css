@@ -132,10 +132,10 @@
 
 /* Service icons */
 .service-icon {
-  width: 160px;
-  height: 160px;
-  border-radius: var(--radius-full);
-  background: linear-gradient(135deg, var(--color-background-tertiary), var(--color-background-secondary));
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  margin: 0 auto var(--spacing-xl);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -143,13 +143,13 @@
 }
 
 .service-icon img {
-  width: 120px;
-  height: 120px;
+  width: 100%;
+  height: auto;
   object-fit: contain;
 }
 
 .service-icon:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 /* Footer logo */
@@ -188,13 +188,14 @@
   }
   
   .service-icon {
-    width: 140px;
-    height: 140px;
+    width: 100%;
+    max-width: 280px;
+    height: auto;
   }
   
   .service-icon img {
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    height: auto;
   }
   
   .footer__logo {
@@ -231,13 +232,14 @@
   }
   
   .service-icon {
-    width: 90px;
-    height: 90px;
+    width: 100%;
+    max-width: 260px;
+    height: auto;
   }
   
   .service-icon img {
-    width: 45px;
-    height: 45px;
+    width: 100%;
+    height: auto;
   }
 }
 
@@ -268,15 +270,8 @@
     height: 300px;
   }
   
-  .service-icon {
-    width: 80px;
-    height: 80px;
-  }
+
   
-  .service-icon img {
-    width: 40px;
-    height: 40px;
-  }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {

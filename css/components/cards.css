@@ -220,11 +220,10 @@
 }
 
 .service-icon {
-  width: 80px;
-  height: 80px;
+  width: 100%;
+  max-width: 320px;
+  height: auto;
   margin: 0 auto var(--spacing-xl);
-  border-radius: var(--radius-full);
-  background: linear-gradient(135deg, var(--color-background-tertiary), var(--color-background-secondary));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -232,12 +231,13 @@
 }
 
 .service-card:hover .service-icon {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .service-icon img {
-  width: 40px;
-  height: 40px;
+  width: 100%;
+  min-width: 150px !important;
+  height: auto;
   object-fit: contain;
 }
 
