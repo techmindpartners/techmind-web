@@ -1,0 +1,8 @@
+<svg width="120" height="144" viewBox="0 0 120 144" xmlns="http://www.w3.org/2000/svg">
+  <path d="M60 3 L114 24 V78 C114 109 84 132 60 141 C36 132 6 109 6 78 V24 Z" fill="#0d3b66" stroke="#c9a84c" stroke-width="2.5"/>
+  <path d="M60 14 L105 33 V75 C105 102 80 121 60 129 C40 121 15 102 15 75 V33 Z" fill="#0f4c81" stroke="#c9a84c" stroke-width="1" opacity="0.4"/>
+  <text x="60" y="47" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="3">ISO</text>
+  <text x="60" y="76" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="800" fill="#fff" text-anchor="middle">22301</text>
+  <line x1="25" y1="85" x2="95" y2="85" stroke="#c9a84c" stroke-width="1"/>
+  <text x="60" y="104" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="700" fill="#c9a84c" text-anchor="middle" letter-spacing="2.5">CERTIFIED</text>
+</svg>
